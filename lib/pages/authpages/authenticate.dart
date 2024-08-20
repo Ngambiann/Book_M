@@ -63,7 +63,7 @@ class _SignInState extends State<Authenticate> {
                     backgroundColor: WidgetStatePropertyAll(
                         Color.fromARGB(255, 136, 109, 182))),
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => const Explore(),
                   ));
                 },

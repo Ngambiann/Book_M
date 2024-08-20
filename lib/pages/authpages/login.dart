@@ -46,7 +46,7 @@ class _LoginState extends State<Login> {
                           backgroundColor: WidgetStatePropertyAll(
                               Color.fromARGB(255, 70, 83, 206))),
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => const Explore()));
                       },
                       child: const Text.rich(TextSpan(text: "Login"))),
