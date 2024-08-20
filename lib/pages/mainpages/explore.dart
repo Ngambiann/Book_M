@@ -1,6 +1,8 @@
+//import 'dart:io';
+
 import 'package:bookmark/pages/authpages/wrapper.dart';
 import 'package:bookmark/pages/subpages/notifications.dart';
-import 'package:bookmark/pages/subpages/search.dart';
+//import 'package:bookmark/pages/subpages/search.dart';
 import 'package:flutter/material.dart';
 
 class Explore extends StatefulWidget {
@@ -14,11 +16,9 @@ class _MainpageState extends State<Explore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(65),
-          child: AppBar(
-            title: const Text('GoodMorning'),
-            actions: [
+        appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(55),
+            child: AppBar(title: const Text("Good morning name"), actions: [
               IconButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
@@ -31,21 +31,11 @@ class _MainpageState extends State<Explore> {
                         builder: (context) => const Wrapper()));
                   },
                   icon: const Icon(Icons.person))
-            ],
-          )),
-      body: TextFormField(
-        enableSuggestions: true,
-        decoration: InputDecoration(
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
-            labelText: "Search",
-            prefixIcon: IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Search()));
-                },
-                icon: const Icon(Icons.search_rounded))),
-      ),
-      /*bottomNavigationBar: BottomNavigationBar(
+            ])),
+        );
+  }
+}
+/*bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -57,6 +47,15 @@ class _MainpageState extends State<Explore> {
     ],  
         selectedItemColor: Colors.black,
       ),*/
-    );
-  }
-}
+/* TextFormField(
+        enableSuggestions: true,
+        decoration: InputDecoration(
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
+            labelText: "Search",
+            prefixIcon: IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Search()));
+                },
+                icon: const Icon(Icons.search_rounded))),
+      ),*/

@@ -1,4 +1,5 @@
-import 'package:bookmark/pages/mainpages/explore.dart';
+import 'package:bookmark/pages/authpages/authenticate.dart';
+
 import 'package:flutter/material.dart';
 
 class Landingpage extends StatefulWidget {
@@ -37,8 +38,8 @@ class _MyWidgetState extends State<Landingpage> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const Explore()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const Authenticate()));
               },
               style: const ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.black)),

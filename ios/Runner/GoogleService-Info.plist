@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyCPlePdiEyWdQ_wLAJKmXDLD8MtBYOfJwk</string>
+	<string>AIzaSyCASx59p1NZWK7ewE5UkdBErE3ZAoQg7Do</string>
 	<key>GCM_SENDER_ID</key>
-	<string>445790896291</string>
+	<string>978364652627</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.bookmark</string>
 	<key>PROJECT_ID</key>
-	<string>boo-m-6f3d9</string>
+	<string>fire-bm-48c62</string>
 	<key>STORAGE_BUCKET</key>
-	<string>boo-m-6f3d9.appspot.com</string>
+	<string>fire-bm-48c62.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:445790896291:ios:dd47dfcf1cb0abf9ff7f16</string>
+	<string>1:978364652627:ios:383aa4c78cd0496449baa6</string>
 </dict>
 </plist>
