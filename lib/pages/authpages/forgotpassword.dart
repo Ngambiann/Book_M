@@ -12,7 +12,7 @@ class _ForgotpasswordState extends State<Forgotpassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Recover Account"),
+        title: const Text("Account Recovery"),
         backgroundColor: Colors.indigoAccent,
       ),
       body: Padding(padding:const  EdgeInsets.all(15),
@@ -25,7 +25,9 @@ class _ForgotpasswordState extends State<Forgotpassword> {
             ),
           ),
           
-            ElevatedButton(onPressed:(){} ,
+            ElevatedButton(onPressed:(){
+              
+            } ,
              child:const Text.rich(TextSpan(text: "Send Recovery Email")))
         ],
       ),

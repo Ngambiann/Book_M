@@ -1,8 +1,9 @@
-import 'package:bookmark/pages/mainpages/landingpage.dart';
+import 'package:bookmark/pages/landingpages/page1.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 255, 255, 255)),
         useMaterial3: true,
       ),
-      home: const Landingpage(),
+      home: const Page1(),
     );
   }
 }

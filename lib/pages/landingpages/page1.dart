@@ -1,18 +1,35 @@
 import 'package:bookmark/pages/authpages/authenticate.dart';
+import 'package:bookmark/pages/subpages/navscreens.dart';
 
 import 'package:flutter/material.dart';
 
-class Landingpage extends StatefulWidget {
-  const Landingpage({super.key});
+class Page1 extends StatefulWidget {
+  const Page1({super.key});
 
   @override
-  State<Landingpage> createState() => _MyWidgetState();
+  State<Page1> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<Landingpage> {
+class _MyWidgetState extends State<Page1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          TextButton(
+              style: const ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.black54)),
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const Navscreens()));
+              },
+              child:
+                  const Text('Skip', style: TextStyle(color: Colors.white70)))
+        ],
+      )),
+      
       backgroundColor: Colors.white,
       //Image.asset('images/image_a.jpg')
 
