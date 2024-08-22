@@ -1,4 +1,5 @@
 import 'package:bookmark/pages/subpages/profile.dart';
+import 'package:bookmark/pages/subpages/search.dart';
 
 import 'package:flutter/material.dart';
 
@@ -39,9 +40,32 @@ class _MainpageState extends State<Explore> {
               icon: const Icon(Icons.person)),
         ],
       ),
-      body: Center(
-        child:Image.asset('assets/images/icon2.png',fit: BoxFit.fill,)
+      body:  Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TextFormField(
+              enableSuggestions: true,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(45)),
+                  labelText: "Search for hidden gem",
+                  labelStyle: const TextStyle(color: Colors.black54),
+                  fillColor: const Color.fromARGB(255, 159, 52, 14),
+                  iconColor: Colors.black87,
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const Search()));
+                      },
+                      icon: const Icon(Icons.search_rounded))),
+            ),
+            Center(
+        child:Image.asset('assets/images/icon2.png',fit: BoxFit.cover)
       ),
+          ],
+        ),
+      
+      
     );
   }
 }

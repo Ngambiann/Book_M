@@ -1,5 +1,6 @@
 import 'package:bookmark/pages/authpages/login.dart';
 import 'package:bookmark/pages/subpages/navscreens.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -30,28 +31,45 @@ class _SignInState extends State<Signup> {
       ));
     }
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailAddressController.text,
-          password: passwordController.text);
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: emailAddressController.text,
+              password: passwordController.text);
+//extra user deets
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .set({
+            'email':emailAddressController.text.trim(),
+            'password':passwordController.text.trim(),
+          });
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Sign up successfull"),
         backgroundColor: Colors.green,
       ));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const Navscreens(),
+                  ));
     } catch (e) {
-      
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Error occured"),
+        backgroundColor: Colors.red,
+      ));
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white70,
       appBar: AppBar(
+        backgroundColor:  Colors.white70,
           title: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           TextButton(
               style: const ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(Colors.black54)),
+                  backgroundColor: WidgetStatePropertyAll(Color.fromRGBO(128, 128, 0,100))),
               onPressed: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => const Navscreens()));
@@ -119,12 +137,8 @@ class _SignInState extends State<Signup> {
             ),
             ElevatedButton(
                 style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.black45)),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const Navscreens(),
-                  ));
-                },
+                    backgroundColor: WidgetStatePropertyAll(Color.fromARGB(255, 24, 86, 33))),
+                onPressed: signup,
                 child: const Text(
                   "Sign Up",
                   style: TextStyle(color: Colors.white70),

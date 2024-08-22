@@ -1,4 +1,4 @@
-import 'package:bookmark/pages/landingpages/page1.dart';
+import 'package:bookmark/pages/intropage/pages.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 255, 255, 255)),
         useMaterial3: true,
       ),
-      home: const Page1(),
+      home: const Pages(),
     );
   }
 }

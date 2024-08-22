@@ -28,20 +28,26 @@ class _NavState extends State<Navscreens> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor:const Color.fromARGB(255, 159, 52, 14),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
+            backgroundColor: Colors.transparent,
             icon: Icon(Icons.home, color: Colors.black54),
             activeIcon: Icon(Icons.home, color: Colors.black87),
-            label: 'Home',
+            label: 'explore'
+            
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.explore, color: Colors.black54),
-              activeIcon: Icon(Icons.explore, color: Colors.black87),
-              label: 'Explore'),
+              icon: Icon(Icons.search, color: Colors.black54),
+              activeIcon: Icon(Icons.search, color: Colors.black87),
+              label: 'Search'
+          ),
           BottomNavigationBarItem(
               icon: Icon(Icons.bookmark, color: Colors.black54),
               activeIcon: Icon(Icons.bookmark, color: Colors.black87),
-              label: 'Bookmark')
+              label: 'Bookmarks'
+              )
         ],
         onTap: _onItemTapped,
       ),
