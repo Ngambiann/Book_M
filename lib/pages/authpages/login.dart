@@ -1,4 +1,4 @@
-import 'package:bookmark/pages/authpages/authenticate.dart';
+import 'package:bookmark/pages/authpages/signup.dart';
 import 'package:bookmark/pages/authpages/forgotpassword.dart';
 import 'package:bookmark/pages/subpages/navscreens.dart';
 import 'package:flutter/material.dart';
@@ -95,7 +95,7 @@ class _LoginState extends State<Login> {
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const Authenticate()));
+                            builder: (context) => const Signup()));
                       })
               ],
             ))

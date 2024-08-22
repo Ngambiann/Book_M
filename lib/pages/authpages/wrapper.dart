@@ -1,5 +1,5 @@
 //listen for auth changes
-import 'package:bookmark/pages/authpages/authenticate.dart';
+import 'package:bookmark/pages/authpages/signup.dart';
 import 'package:flutter/material.dart';
 
 class Wrapper extends StatelessWidget {
@@ -7,6 +7,6 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Authenticate();
+    return const Signup();
   }
 }

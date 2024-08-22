@@ -13,6 +13,7 @@ class _MainpageState extends State<Explore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white70,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -39,7 +40,7 @@ class _MainpageState extends State<Explore> {
         ],
       ),
       body: Center(
-        child:Image.asset('assets/images/icon2.png')
+        child:Image.asset('assets/images/icon2.png',fit: BoxFit.fill,)
       ),
     );
   }
