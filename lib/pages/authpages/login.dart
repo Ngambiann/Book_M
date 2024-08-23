@@ -27,12 +27,9 @@ class _LoginState extends State<Login> {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const Navscreens()));
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
+      if (e.code == 400) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text('User does not exist')));
-      } else{
-       
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Error')));
+            .showSnackBar(SnackBar(content: Text('Error${e.toString()}')));
       }
     }
   }
@@ -83,10 +80,7 @@ class _LoginState extends State<Login> {
                     style: const ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(
                             Color.fromARGB(255, 169, 62, 23))),
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const Navscreens()));
-                    },
+                    onPressed: login,
                     child: const Text.rich(TextSpan(
                         text: "Login",
                         style: TextStyle(color: Colors.white70)))),

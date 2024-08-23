@@ -1,4 +1,5 @@
-import 'package:bookmark/pages/authpages/signup.dart';
+
+import 'package:bookmark/pages/intropage/usercategory.dart';
 //import 'package:bookmark/pages/subpages/navscreens.dart';
 
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class Pages extends StatelessWidget {
                         Color.fromARGB(255, 169, 62, 23))),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => const Signup()));
+                      MaterialPageRoute(builder: (context) => const Usercategory()));
                 },
                 child:
                     const Text('Get Started', style: TextStyle(color: Colors.white70)))
