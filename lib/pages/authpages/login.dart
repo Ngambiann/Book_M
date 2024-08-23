@@ -1,6 +1,7 @@
 import 'package:bookmark/pages/authpages/signup.dart';
 import 'package:bookmark/pages/authpages/forgotpassword.dart';
-import 'package:bookmark/pages/subpages/navscreens.dart';
+import 'package:bookmark/pages/navigation/navscreens.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
@@ -12,9 +13,29 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool hideText = true;
   final TextEditingController emailAddressController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  bool hideText = true;
+
+  Future<void> login() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailAddressController.text.trim(),
+          password: passwordController.text.trim());
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Welcome back'), backgroundColor: Colors.green));
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const Navscreens()));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('User does not exist')));
+      } else{
+       
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Error')));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +81,8 @@ class _LoginState extends State<Login> {
               children: [
                 ElevatedButton(
                     style: const ButtonStyle(
-                        backgroundColor:
-                            WidgetStatePropertyAll(Colors.black54)),
+                        backgroundColor: WidgetStatePropertyAll(
+                            Color.fromARGB(255, 169, 62, 23))),
                     onPressed: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => const Navscreens()));

@@ -1,5 +1,6 @@
 import 'package:bookmark/pages/authpages/login.dart';
-import 'package:bookmark/pages/subpages/navscreens.dart';
+import 'package:bookmark/pages/navigation/bottombar.dart';
+import 'package:bookmark/pages/navigation/navscreens.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
@@ -26,9 +27,11 @@ class _SignInState extends State<Signup> {
   Future<void> signup() async {
     if (passwordController.text != confirmPasswordController.text) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      
         content: Text("Passwords don't match"),
         backgroundColor: Colors.red,
       ));
+      return;
     }
     try {
       UserCredential userCredential = await FirebaseAuth.instance
@@ -51,8 +54,8 @@ class _SignInState extends State<Signup> {
                     builder: (context) => const Navscreens(),
                   ));
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Error occured"),
+      ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+        content: Text("Registration failed:${e.toString()}"),
         backgroundColor: Colors.red,
       ));
     }
@@ -61,18 +64,18 @@ class _SignInState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white70,
+      
       appBar: AppBar(
-        backgroundColor:  Colors.white70,
+       
           title: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           TextButton(
               style: const ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(Color.fromRGBO(128, 128, 0,100))),
+                  backgroundColor: WidgetStatePropertyAll(Color.fromARGB(255, 169, 62, 23))),
               onPressed: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const Navscreens()));
+                    builder: (context) => const Bottombar()));
               },
               child:
                   const Text('Skip', style: TextStyle(color: Colors.white70)))
@@ -137,7 +140,7 @@ class _SignInState extends State<Signup> {
             ),
             ElevatedButton(
                 style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Color.fromARGB(255, 24, 86, 33))),
+                    backgroundColor: WidgetStatePropertyAll(Color.fromARGB(255, 169, 62, 23))),
                 onPressed: signup,
                 child: const Text(
                   "Sign Up",

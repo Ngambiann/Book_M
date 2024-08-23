@@ -9,43 +9,40 @@ class Pages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white70,
-        appBar: AppBar(
-          
-            
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                
-               TextButton(
-              style: const ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(Color.fromARGB(255, 159, 52, 14))),
-              onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const Signup()));
-              },
-              child:
-                  const Text('Skip', style: TextStyle(color: Colors.white70)))
-                
-              ],
-            ),
-          
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            TextButton(
+                style: const ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(
+                        Color.fromARGB(255, 169, 62, 23))),
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => const Signup()));
+                },
+                child:
+                    const Text('Get Started', style: TextStyle(color: Colors.white70)))
+          ],
         ),
-        body: Stack(children: [
-          PageView(
-            children: [
-              Eachpage('assets/images/takeawayneon.jpg',
-                  'Discover and visit amazing hidden gems in the city '),
-              Eachpage('assets/images/lobby.jpg', 'Plan your next adventure!'),
-              Eachpage('assets/images/restaurantfood.jpg',
-                  'Lets get the trip out of te group chat'),
-            ],
-          ),
-          
-        ]));
+      ),
+      body: Stack(children: [
+        PageView(
+          children: [
+            Eachpage('assets/images/introbackground.jpg',
+                'Discover and visit amazing hidden gems in the city '),
+            Eachpage('assets/images/introbackground.jpg',
+                'Plan your next adventure!'),
+            Eachpage('assets/images/introbackground.jpg',
+                'Lets get the trip out of te group chat'),
+          ],
+        ),
+      ]),
+    );
   }
 }
 
+// ignore: must_be_immutable
 class Eachpage extends StatelessWidget {
   String imageroute;
   String tag;

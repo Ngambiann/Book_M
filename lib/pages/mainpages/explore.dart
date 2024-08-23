@@ -1,5 +1,5 @@
-import 'package:bookmark/pages/subpages/profile.dart';
-import 'package:bookmark/pages/subpages/search.dart';
+import 'package:bookmark/pages/navigation/profile.dart';
+import 'package:bookmark/pages/navigation/search.dart';
 
 import 'package:flutter/material.dart';
 
@@ -41,7 +41,7 @@ class _MainpageState extends State<Explore> {
         ],
       ),
       body:  Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
               enableSuggestions: true,
@@ -59,9 +59,7 @@ class _MainpageState extends State<Explore> {
                       },
                       icon: const Icon(Icons.search_rounded))),
             ),
-            Center(
-        child:Image.asset('assets/images/icon2.png',fit: BoxFit.cover)
-      ),
+            
           ],
         ),
       

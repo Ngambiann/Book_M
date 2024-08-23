@@ -1,6 +1,6 @@
 import 'package:bookmark/pages/mainpages/explore.dart';
-import 'package:bookmark/pages/subpages/bookmark.dart';
-import 'package:bookmark/pages/subpages/search.dart';
+import 'package:bookmark/pages/navigation/bookmark.dart';
+import 'package:bookmark/pages/navigation/search.dart';
 import 'package:flutter/material.dart';
 
 class Navscreens extends StatefulWidget {

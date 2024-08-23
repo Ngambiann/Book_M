@@ -1,4 +1,4 @@
-import 'package:bookmark/pages/subpages/filter.dart';
+import 'package:bookmark/pages/navigation/filter.dart';
 import 'package:flutter/material.dart';
 
 class Search extends StatefulWidget {
