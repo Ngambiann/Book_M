@@ -2,6 +2,7 @@ import 'package:bookmark/pages/navigation/profile.dart';
 import 'package:bookmark/pages/navigation/search.dart';
 
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class Explore extends StatefulWidget {
   const Explore({super.key});
@@ -37,7 +38,7 @@ class _MainpageState extends State<Explore> {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => const Profile()));
               },
-              icon: const Icon(Icons.person)),
+              icon: const Icon(PhosphorIconsBold.user),hoverColor:const Color.fromARGB(255, 159, 52, 14) ,),
         ],
       ),
       body:  Column(

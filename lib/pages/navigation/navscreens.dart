@@ -2,6 +2,7 @@ import 'package:bookmark/pages/mainpages/explore.dart';
 import 'package:bookmark/pages/navigation/bookmark.dart';
 import 'package:bookmark/pages/navigation/search.dart';
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class Navscreens extends StatefulWidget {
   const Navscreens({super.key});
@@ -28,24 +29,29 @@ class _NavState extends State<Navscreens> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor:const Color.fromARGB(255, 159, 52, 14),
+        elevation: 8.0,
+        selectedItemColor:const Color.fromARGB(255, 169, 62, 23) ,
+        unselectedItemColor: const Color(0xFF526400),
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
+       
+       
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             backgroundColor: Colors.transparent,
-            icon: Icon(Icons.home, color: Colors.black54),
-            activeIcon: Icon(Icons.home, color: Colors.black87),
+            icon: Icon(PhosphorIconsRegular.compass,color: Colors.black54),
+            activeIcon: Icon(PhosphorIconsBold.compass, color:Color.fromARGB(255, 169, 62, 23)),
             label: 'explore'
             
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.search, color: Colors.black54),
-              activeIcon: Icon(Icons.search, color: Colors.black87),
+              icon: Icon(PhosphorIconsRegular.binoculars, color: Colors.black54),
+              activeIcon: Icon(PhosphorIconsBold.binoculars, color: Colors.black87),
               label: 'Search'
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark, color: Colors.black54),
-              activeIcon: Icon(Icons.bookmark, color: Colors.black87),
+              icon: Icon(PhosphorIconsRegular.bookmarks, color: Colors.black54),
+              activeIcon: Icon(PhosphorIconsBold.bookmarks, color: Colors.black87),
               label: 'Bookmarks'
               )
         ],

@@ -1,5 +1,6 @@
 import 'package:bookmark/pages/navigation/filter.dart';
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -19,7 +20,7 @@ class _SearchState extends State<Search> {
             IconButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Filter()));
-                }, icon: const Icon(Icons.filter_list_rounded)),
+                }, icon: const Icon(PhosphorIconsRegular.funnelSimple)),
           ],
         ),
       ),

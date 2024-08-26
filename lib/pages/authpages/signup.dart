@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -27,7 +28,6 @@ class _SignInState extends State<Signup> {
   Future<void> signup() async {
     if (passwordController.text != confirmPasswordController.text) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      
         content: Text("Passwords don't match"),
         backgroundColor: Colors.red,
       ));
@@ -43,18 +43,18 @@ class _SignInState extends State<Signup> {
           .collection('users')
           .doc(userCredential.user!.uid)
           .set({
-            'email':emailAddressController.text.trim(),
-            'password':passwordController.text.trim(),
-          });
+        'email': emailAddressController.text.trim(),
+        'password': passwordController.text.trim(),
+      });
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Sign up successfull"),
         backgroundColor: Colors.green,
       ));
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const Navscreens(),
-                  ));
+        builder: (context) => const Navscreens(),
+      ));
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Registration failed:${e.toString()}"),
         backgroundColor: Colors.red,
       ));
@@ -64,18 +64,17 @@ class _SignInState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       appBar: AppBar(
-       
           title: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           TextButton(
               style: const ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(Color.fromARGB(255, 169, 62, 23))),
+                  backgroundColor:
+                      WidgetStatePropertyAll(Color.fromARGB(255, 169, 62, 23))),
               onPressed: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const Bottombar()));
+                    builder: (context) => const Navscreens()));
               },
               child:
                   const Text('Skip', style: TextStyle(color: Colors.white70)))
@@ -87,12 +86,13 @@ class _SignInState extends State<Signup> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
+              
               controller: emailAddressController,
               decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(45)),
-                  labelText: ("Email address"),
-                  prefixIcon: const Icon(Icons.email)),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
+                labelText: ("Email"),
+              ),
             ),
             const SizedBox(
               height: 15,
@@ -103,8 +103,7 @@ class _SignInState extends State<Signup> {
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(45)),
-                  labelText: "password",
-                  prefixIcon: const Icon(Icons.password_rounded),
+                  labelText: "Password",
                   suffixIcon: IconButton(
                       onPressed: () {
                         setState(() {
@@ -112,8 +111,8 @@ class _SignInState extends State<Signup> {
                         });
                       },
                       icon: Icon(hideTextp
-                          ? Icons.visibility_off
-                          : Icons.visibility))),
+                          ? PhosphorIconsRegular.eyeClosed
+                          : PhosphorIconsRegular.eye))),
             ),
             const SizedBox(
               height: 15,
@@ -124,7 +123,6 @@ class _SignInState extends State<Signup> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(45)),
                     labelText: " confirm password",
-                    prefixIcon: const Icon(Icons.password_rounded),
                     suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
@@ -132,15 +130,16 @@ class _SignInState extends State<Signup> {
                           });
                         },
                         icon: Icon(hideTextcp
-                            ? Icons.visibility_off
-                            : Icons.visibility))),
+                            ? PhosphorIconsRegular.eyeClosed
+                            : PhosphorIconsRegular.eye))),
                 obscureText: hideTextcp),
             const SizedBox(
               height: 15,
             ),
             ElevatedButton(
                 style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Color.fromARGB(255, 169, 62, 23))),
+                    backgroundColor: WidgetStatePropertyAll(
+                        Color.fromARGB(255, 169, 62, 23))),
                 onPressed: signup,
                 child: const Text(
                   "Sign Up",
