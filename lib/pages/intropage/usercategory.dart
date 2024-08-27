@@ -1,4 +1,5 @@
-import 'package:bookmark/pages/authpages/signup.dart';
+import 'package:bookmark/pages/authpages/auth.dart';
+
 import 'package:flutter/material.dart';
 
 class Usercategory extends StatelessWidget {
@@ -11,7 +12,6 @@ class Usercategory extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(120.0),
         child: Column(
-          
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
@@ -21,7 +21,7 @@ class Usercategory extends StatelessWidget {
                 )),
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Signup()));
+                      MaterialPageRoute(builder: (context) => const Auth()));
                 },
                 child: const Text(
                   'Explorer',

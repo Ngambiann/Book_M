@@ -11,24 +11,24 @@ class _ForgotpasswordState extends State<Forgotpassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Account Recovery"),
-        backgroundColor: Colors.indigoAccent,
-      ),
+      
       body: Padding(padding:const  EdgeInsets.all(15),
       child: Column(
+        mainAxisAlignment:MainAxisAlignment.center,
         children: [
-          const TextField(
+          TextField(
             decoration: InputDecoration(
-              border: OutlineInputBorder(),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
               labelText: "EmailAddress"
             ),
           ),
           
-            ElevatedButton(onPressed:(){
+            ElevatedButton(
+              style: const ButtonStyle(backgroundColor:WidgetStatePropertyAll(Color.fromARGB(255, 169, 62, 23))),
+              onPressed:(){
               
             } ,
-             child:const Text.rich(TextSpan(text: "Send Recovery Email")))
+             child:const Text("Send recovery Email",style: TextStyle(color: Colors.white70),))
         ],
       ),
     ));

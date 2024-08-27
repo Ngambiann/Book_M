@@ -1,5 +1,6 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:bookmark/pages/authpages/login.dart';
-import 'package:bookmark/pages/navigation/bottombar.dart';
 import 'package:bookmark/pages/navigation/navscreens.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -19,21 +20,30 @@ class _SignInState extends State<Signup> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
 
   bool hideTextp = true;
   //for password
   bool hideTextcp = true;
   //for confirm password
+  void displayMessageToUser(String message, BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text(message),
+            ));
+  }
 
+//db auth
+//if passwords don't match
   Future<void> signup() async {
     if (passwordController.text != confirmPasswordController.text) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Passwords don't match"),
-        backgroundColor: Colors.red,
-      ));
-      return;
+      displayMessageToUser("Passwords don't match", context);
     }
-    try {
+    //if passwords do match
+    else{
+      //try creating user
+       try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
               email: emailAddressController.text,
@@ -43,24 +53,17 @@ class _SignInState extends State<Signup> {
           .collection('users')
           .doc(userCredential.user!.uid)
           .set({
+        'username': usernameController.text.trim(),
         'email': emailAddressController.text.trim(),
         'password': passwordController.text.trim(),
       });
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Sign up successfull"),
-        backgroundColor: Colors.green,
-      ));
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const Navscreens(),
-      ));
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Registration failed:${e.toString()}"),
-        backgroundColor: Colors.red,
-      ));
+    }on FirebaseException catch (e) {
+  displayMessageToUser(e.code, context);
     }
   }
 
+    }
+   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,12 +89,22 @@ class _SignInState extends State<Signup> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              
+              controller: usernameController,
+              decoration: InputDecoration(
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
+                hintText: ("Username"),
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            TextField(
               controller: emailAddressController,
               decoration: InputDecoration(
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
-                labelText: ("Email"),
+                hintText: ("Email"),
               ),
             ),
             const SizedBox(
@@ -103,7 +116,7 @@ class _SignInState extends State<Signup> {
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(45)),
-                  labelText: "Password",
+                  hintText: "Password",
                   suffixIcon: IconButton(
                       onPressed: () {
                         setState(() {
@@ -122,7 +135,7 @@ class _SignInState extends State<Signup> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(45)),
-                    labelText: " confirm password",
+                    hintText: " confirm password",
                     suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
@@ -148,13 +161,12 @@ class _SignInState extends State<Signup> {
             Text.rich(
               TextSpan(
                 text: "Already have an account?",
-                style: const TextStyle(color: Colors.black54),
+                style: const TextStyle(color: Colors.black45),
                 children: <TextSpan>[
                   TextSpan(
                       text: "Login",
                       style: const TextStyle(
-                        color: Colors.black87,
-                      ),
+                          color: Colors.black87, fontWeight: FontWeight.bold),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           Navigator.of(context).push(

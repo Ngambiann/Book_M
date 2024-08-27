@@ -1,9 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:bookmark/pages/authpages/signup.dart';
 import 'package:bookmark/pages/authpages/forgotpassword.dart';
 import 'package:bookmark/pages/navigation/navscreens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -17,26 +20,34 @@ class _LoginState extends State<Login> {
   final TextEditingController emailAddressController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  void displayMessageToUser(String message, BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text(message),
+            ));
+  }
+
   Future<void> login() async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailAddressController.text.trim(),
           password: passwordController.text.trim());
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Welcome back'), backgroundColor: Colors.green));
+      
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const Navscreens()));
+          displayMessageToUser('Welcome back!', context);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 400) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Error${e.toString()}')));
-      }
+      
+       displayMessageToUser(e.code, context);
+      
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
@@ -45,10 +56,10 @@ class _LoginState extends State<Login> {
             TextField(
               controller: emailAddressController,
               decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(45)),
-                  labelText: "Email Address",
-                  prefixIcon: const Icon(Icons.email_rounded)),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
+                hintText: "Email",
+              ),
             ),
             const SizedBox(
               height: 15,
@@ -58,16 +69,16 @@ class _LoginState extends State<Login> {
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(45)),
-                  labelText: "Password",
-                  prefixIcon: const Icon(Icons.password_rounded),
+                  hintText: "Password",
                   suffixIcon: IconButton(
                       onPressed: () {
                         setState(() {
                           hideText = !hideText;
                         });
                       },
-                      icon: Icon(
-                          hideText ? Icons.visibility_off : Icons.visibility))),
+                      icon: Icon(hideText
+                          ? PhosphorIconsRegular.eyeClosed
+                          : PhosphorIconsRegular.eye))),
               obscureText: hideText,
             ),
             const SizedBox(
@@ -88,6 +99,8 @@ class _LoginState extends State<Login> {
                   onTap: () {},
                   child: Text.rich(TextSpan(
                     text: "Forgot password",
+                    style: const TextStyle(
+                        color: Colors.black87, fontWeight: FontWeight.bold),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         Navigator.of(context).push(MaterialPageRoute(
@@ -100,13 +113,12 @@ class _LoginState extends State<Login> {
             ),
             Text.rich(TextSpan(
               text: "Don't have an account?",
-              style: const TextStyle(color: Colors.black54),
+              style: const TextStyle(color: Colors.black45),
               children: <TextSpan>[
                 TextSpan(
                     text: "Sign up",
                     style: const TextStyle(
-                      color: Colors.black87,
-                    ),
+                        color: Colors.black87, fontWeight: FontWeight.bold),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         Navigator.of(context).push(MaterialPageRoute(

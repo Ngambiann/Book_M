@@ -1,4 +1,6 @@
 import 'package:bookmark/pages/intropage/pages.dart';
+import 'package:bookmark/theme/darkmode.dart';
+import 'package:bookmark/theme/lightmode.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
@@ -25,11 +27,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Bookmark',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 255, 255, 255)),
-        useMaterial3: true,
-      ),
+      theme: lightMode,
+      darkTheme: darkMode,
       home: const Pages(),
     );
   }

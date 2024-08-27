@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class Profile extends StatefulWidget {
+
+
   const Profile({super.key});
 
   @override
@@ -8,10 +12,18 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+    void logout(){
+FirebaseAuth.instance.signOut();
+  }
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color.fromARGB(0, 0, 0, 0),
+    return Scaffold(
+      body: Center(
+          child: IconButton(
+              onPressed: logout,
+               icon: const Icon(PhosphorIconsRegular.signOut))
+              
+              ),
     );
   }
 }

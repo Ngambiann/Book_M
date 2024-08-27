@@ -1,6 +1,4 @@
-
 import 'package:bookmark/pages/intropage/usercategory.dart';
-//import 'package:bookmark/pages/subpages/navscreens.dart';
 
 import 'package:flutter/material.dart';
 
@@ -10,35 +8,40 @@ class Pages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            TextButton(
-                style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(
-                        Color.fromARGB(255, 169, 62, 23))),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => const Usercategory()));
-                },
-                child:
-                    const Text('Get Started', style: TextStyle(color: Colors.white70)))
-          ],
-        ),
-      ),
-      body: Stack(children: [
-        PageView(
-          children: [
-            Eachpage('assets/images/introbackground.jpg',
-                'Discover and visit amazing hidden gems in the city '),
-            Eachpage('assets/images/introbackground.jpg',
-                'Plan your next adventure!'),
-            Eachpage('assets/images/introbackground.jpg',
-                'Lets get the trip out of te group chat'),
-          ],
-        ),
-      ]),
+    
+      body: Container(
+          constraints: const BoxConstraints.expand(),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/introbackground.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+             TextButton(
+                  style: const ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(
+                          Color.fromARGB(255, 169, 62, 23))),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const Usercategory()));
+                  },
+                  child: const Text('Get Started',
+                      style: TextStyle(color: Colors.white70))),
+                      Column(
+                        children: [
+                          
+                        ],
+                      )
+            ],
+            
+          ),
+          
+          ),
+          
     );
   }
 }
@@ -68,11 +71,6 @@ class Eachpage extends StatelessWidget {
   }
 }
 
-
-
-
-
-
 /* TextButton(
               onPressed: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -85,11 +83,9 @@ class Eachpage extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               onFocusChange: (value) => true,
-            )*/ 
+            )*/
 
-
-
-            /*appBar: AppBar(
+/*appBar: AppBar(
           title: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
