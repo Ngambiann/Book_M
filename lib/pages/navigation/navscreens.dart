@@ -14,7 +14,7 @@ class Navscreens extends StatefulWidget {
 class _NavState extends State<Navscreens> {
   int _selectedIndex = 0;
 
-  final List<Widget> _navpages = [
+  final _navpages = [
     const Explore(),
     const Search(),
     const Bookmark(),
@@ -29,33 +29,31 @@ class _NavState extends State<Navscreens> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        elevation: 8.0,
-        selectedItemColor:const Color.fromARGB(255, 169, 62, 23) ,
-        unselectedItemColor: const Color(0xFF526400),
+        onTap: _onItemTapped,
+        currentIndex: _selectedIndex,
+        selectedItemColor: const Color.fromARGB(255, 169, 62, 23),
+        unselectedItemColor: Colors.black54,
         showUnselectedLabels: false,
         showSelectedLabels: false,
-       
-       
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            backgroundColor: Colors.transparent,
-            icon: Icon(PhosphorIconsRegular.compass,color: Colors.black54),
-            activeIcon: Icon(PhosphorIconsBold.compass, color:Color.fromARGB(255, 169, 62, 23)),
-            label: 'explore'
-            
-          ),
+              backgroundColor: Colors.transparent,
+              icon: Icon(PhosphorIconsRegular.compass, color: Colors.black54),
+              activeIcon: Icon(PhosphorIconsBold.compass,
+                  color: Color.fromARGB(255, 169, 62, 23)),
+              label: 'explore'),
           BottomNavigationBarItem(
-              icon: Icon(PhosphorIconsRegular.binoculars, color: Colors.black54),
-              activeIcon: Icon(PhosphorIconsBold.binoculars, color: Colors.black87),
-              label: 'Search'
-          ),
+              icon:
+                  Icon(PhosphorIconsRegular.binoculars, color: Colors.black54),
+              activeIcon: Icon(PhosphorIconsBold.binoculars,
+                  color: Color.fromARGB(255, 169, 62, 23)),
+              label: 'Search'),
           BottomNavigationBarItem(
               icon: Icon(PhosphorIconsRegular.bookmarks, color: Colors.black54),
-              activeIcon: Icon(PhosphorIconsBold.bookmarks, color: Colors.black87),
-              label: 'Bookmarks'
-              )
+              activeIcon: Icon(PhosphorIconsBold.bookmarks,
+                  color: Color.fromARGB(255, 169, 62, 23)),
+              label: 'Bookmarks')
         ],
-        onTap: _onItemTapped,
       ),
       body: _navpages[_selectedIndex],
     );
