@@ -1,4 +1,5 @@
-import 'package:bookmark/pages/intropage/pages.dart';
+import 'package:bookmark/pages/authpages/auth.dart';
+import 'package:bookmark/pages/intropage/slides.dart';
 import 'package:bookmark/theme/darkmode.dart';
 import 'package:bookmark/theme/lightmode.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       title: 'Bookmark',
       theme: lightMode,
       darkTheme: darkMode,
-      home: const Pages(),
+      home: const Auth(),
     );
   }
 }

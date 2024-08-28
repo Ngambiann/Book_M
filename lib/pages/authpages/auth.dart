@@ -1,5 +1,6 @@
 import 'package:bookmark/pages/authpages/login.dart';
-import 'package:bookmark/pages/mainpages/explore.dart';
+import 'package:bookmark/pages/screens/navscreens.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class Auth extends StatelessWidget {
           builder: (context, snapshot) {
             //logged in user
             if (snapshot.hasData) {
-              return const Explore();
+              return const Navscreens();
             }
 
             //not loggeg in user

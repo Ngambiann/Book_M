@@ -1,6 +1,6 @@
-import 'package:bookmark/pages/mainpages/explore.dart';
-import 'package:bookmark/pages/navigation/bookmark.dart';
-import 'package:bookmark/pages/navigation/search.dart';
+import 'package:bookmark/pages/views/explore.dart';
+import 'package:bookmark/pages/views/bookmark.dart';
+import 'package:bookmark/pages/views/search.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 

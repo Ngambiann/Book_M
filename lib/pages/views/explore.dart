@@ -1,5 +1,5 @@
-import 'package:bookmark/pages/navigation/profile.dart';
-import 'package:bookmark/pages/navigation/search.dart';
+import 'package:bookmark/pages/views/profile.dart';
+import 'package:bookmark/pages/views/search.dart';
 
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';

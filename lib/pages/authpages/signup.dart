@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:bookmark/pages/authpages/login.dart';
-import 'package:bookmark/pages/navigation/navscreens.dart';
+import 'package:bookmark/pages/screens/navscreens.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
@@ -30,7 +30,11 @@ class _SignInState extends State<Signup> {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              title: Text(message),
+              title: Text(
+                message,
+                style: const TextStyle(
+                    color: Color.fromARGB(255, 169, 62, 23), fontSize: 15),
+              ),
             ));
   }
 
@@ -41,36 +45,33 @@ class _SignInState extends State<Signup> {
       displayMessageToUser("Passwords don't match", context);
     }
     //if passwords do match
-    else{
+    else {
       //try creating user
-       try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: emailAddressController.text,
-              password: passwordController.text);
-//extra user deets
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userCredential.user!.uid)
-          .set({
-        'username': usernameController.text.trim(),
-        'email': emailAddressController.text.trim(),
-        'password': passwordController.text.trim(),
-      });
-    }on FirebaseException catch (e) {
-  displayMessageToUser(e.code, context);
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailAddressController.text,
+                password: passwordController.text);
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const Navscreens()));
+//extra user details
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(userCredential.user!.uid)
+            .set({
+          'email': emailAddressController.text.trim(),
+          'password': passwordController.text.trim(),
+        });
+      } on FirebaseException catch (e) {
+        displayMessageToUser(e.code, context);
+      }
     }
   }
 
-    }
-   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
+        appBar: AppBar(actions: [
           TextButton(
               style: const ButtonStyle(
                   backgroundColor:
@@ -81,121 +82,156 @@ class _SignInState extends State<Signup> {
               },
               child:
                   const Text('Skip', style: TextStyle(color: Colors.white70)))
-        ],
-      )),
-      body: Padding(
-        padding: const EdgeInsets.all(25),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: usernameController,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
-                hintText: ("Username"),
+        ]),
+        body: Padding(
+          padding: const EdgeInsets.all(35),
+          child: ListView(
+            children: [
+              const SizedBox(
+                height: 25,
               ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            TextField(
-              controller: emailAddressController,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
-                hintText: ("Email"),
+              //Text
+              Container(
+                alignment: AlignmentDirectional.topStart,
+                child: const Text(
+                  'Get Started!',
+                  style: TextStyle(
+                      fontSize: 35, color: Color.fromARGB(255, 169, 62, 23)),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            TextField(
-              controller: passwordController,
-              obscureText: hideTextp,
-              decoration: InputDecoration(
+              const SizedBox(
+                height: 25,
+              ),
+              TextField(
+                controller: emailAddressController,
+                decoration: InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(45)),
-                  hintText: "Password",
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          hideTextp = !hideTextp;
-                        });
-                      },
-                      icon: Icon(hideTextp
-                          ? PhosphorIconsRegular.eyeClosed
-                          : PhosphorIconsRegular.eye))),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            TextField(
-                controller: confirmPasswordController,
+                      borderRadius: BorderRadius.circular(25)),
+                  hintText: ("Email"),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextField(
+                controller: passwordController,
+                obscureText: hideTextp,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(45)),
-                    hintText: " confirm password",
+                        borderRadius: BorderRadius.circular(25)),
+                    hintText: "Password",
                     suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
-                            hideTextcp = !hideTextcp;
+                            hideTextp = !hideTextp;
                           });
                         },
-                        icon: Icon(hideTextcp
+                        icon: Icon(hideTextp
                             ? PhosphorIconsRegular.eyeClosed
                             : PhosphorIconsRegular.eye))),
-                obscureText: hideTextcp),
-            const SizedBox(
-              height: 15,
-            ),
-            ElevatedButton(
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextField(
+                  controller: confirmPasswordController,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                      hintText: " confirm password",
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              hideTextcp = !hideTextcp;
+                            });
+                          },
+                          icon: Icon(hideTextcp
+                              ? PhosphorIconsRegular.eyeClosed
+                              : PhosphorIconsRegular.eye))),
+                  obscureText: hideTextcp),
+              const SizedBox(
+                height: 10,
+              ),
+              //sign up button
+              ElevatedButton(
+                  style: const ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(
+                          Color.fromARGB(255, 169, 62, 23))),
+                  onPressed: signup,
+                  child: const Text(
+                    "Sign Up",
+                    style: TextStyle(color: Colors.white70),
+                  )),
+              const SizedBox(
+                height: 10,
+              ),
+              //divider
+              const Row(children: [
+                Expanded(child: Divider(thickness: 0.5)),
+                Spacer(),
+                Text("OR", style: TextStyle(fontSize: 15, color: Colors.black)),
+                Spacer(),
+                Expanded(child: Divider(thickness: 0.5)),
+              ]),
+              const SizedBox(
+                height: 10,
+              ),
+              //with google
+              ElevatedButton.icon(
                 style: const ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(
-                        Color.fromARGB(255, 169, 62, 23))),
-                onPressed: signup,
-                child: const Text(
-                  "Sign Up",
-                  style: TextStyle(color: Colors.white70),
-                )),
-            Text.rich(
-              TextSpan(
-                text: "Already have an account?",
-                style: const TextStyle(color: Colors.black45),
-                children: <TextSpan>[
-                  TextSpan(
-                      text: "Login",
-                      style: const TextStyle(
-                          color: Colors.black87, fontWeight: FontWeight.bold),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => const Login()),
-                          );
-                        })
-                ],
+                        Color.fromARGB(136, 238, 134, 61))),
+                onPressed: () {},
+                label: const Text("Sign up with Google",
+                    style: TextStyle(color: Colors.white70)),
+                icon: const Icon(PhosphorIconsRegular.googleLogo),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
+              //with tiktok
+              ElevatedButton.icon(
+                style: const ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(
+                        Color.fromARGB(136, 238, 134, 61))),
+                onPressed: () {},
+                label: const Text("Sign up with Tiktok",
+                    style: TextStyle(color: Colors.white70)),
+                icon: const Icon(PhosphorIconsRegular.tiktokLogo),
+              ),
+              //with IG
+              ElevatedButton.icon(
+                style: const ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(
+                        Color.fromARGB(136, 238, 134, 61))),
+                onPressed: () {},
+                label: const Text("Sign up with instagram",
+                    style: TextStyle(color: Colors.white70)),
+                icon: const Icon(PhosphorIconsRegular.instagramLogo),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+
+              Text.rich(
+                textAlign: TextAlign.center,
+                TextSpan(
+                  text: "Already have an account?",
+                  style: const TextStyle(color: Colors.black45),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: "Login",
+                        style: const TextStyle(
+                            color: Colors.black87, fontWeight: FontWeight.bold),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const Login()),
+                            );
+                          })
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }
-/*Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  width: 150,
-                  height: 150,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/img.jpg'),
-                        fit: BoxFit.cover),
-                  ),
-                )
-              ],
-            )*/ 

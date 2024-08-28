@@ -1,4 +1,4 @@
-import 'package:bookmark/pages/navigation/filter.dart';
+import 'package:bookmark/pages/screens/filter.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
