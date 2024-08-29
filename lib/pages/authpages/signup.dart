@@ -102,6 +102,7 @@ class _SignInState extends State<Signup> {
               const SizedBox(
                 height: 25,
               ),
+              //Email Address entry
               TextField(
                 controller: emailAddressController,
                 decoration: InputDecoration(
@@ -113,6 +114,7 @@ class _SignInState extends State<Signup> {
               const SizedBox(
                 height: 10,
               ),
+              //Password entry
               TextField(
                 controller: passwordController,
                 obscureText: hideTextp,
@@ -133,6 +135,7 @@ class _SignInState extends State<Signup> {
               const SizedBox(
                 height: 10,
               ),
+              //Confirm password entry
               TextField(
                   controller: confirmPasswordController,
                   decoration: InputDecoration(

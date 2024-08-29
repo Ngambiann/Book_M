@@ -1,5 +1,8 @@
 import 'package:bookmark/pages/authpages/login.dart';
-import 'package:bookmark/pages/screens/notifications.dart';
+import 'package:bookmark/pages/screens/about.dart';
+import 'package:bookmark/pages/screens/get_help.dart';
+
+import 'package:bookmark/pages/screens/settings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
@@ -36,7 +39,7 @@ class _ProfileState extends State<Profile> {
               leading: TextButton.icon(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Notifications()));
+                        builder: (context) => const Settings()));
                   },
                   icon: const Icon(PhosphorIconsRegular.gear),
                   label: const Text("Settings",
@@ -47,7 +50,7 @@ class _ProfileState extends State<Profile> {
               leading: TextButton.icon(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Notifications()));
+                        builder: (context) => const Settings()));
                   },
                   icon: const Icon(PhosphorIconsRegular.shareNetwork),
                   label: const Text("Share app",
@@ -58,7 +61,7 @@ class _ProfileState extends State<Profile> {
               leading: TextButton.icon(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Notifications()));
+                        builder: (context) => const GetHelp()));
                   },
                   icon: const Icon(PhosphorIconsRegular.question),
                   label: const Text("Get Help",
@@ -68,8 +71,8 @@ class _ProfileState extends State<Profile> {
             ListTile(
               leading: TextButton.icon(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Notifications()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const About()));
                   },
                   icon: const Icon(PhosphorIconsRegular.info),
                   label: const Text("About",
@@ -78,7 +81,33 @@ class _ProfileState extends State<Profile> {
             //Log_out
             ListTile(
               leading: TextButton.icon(
-                  onPressed: logout,
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog.adaptive(
+                          icon: const Icon(PhosphorIconsBold.heartStraightBreak),
+                              title:
+                                  const Text('Are you sure you want to leave?'),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text(
+                                      'cancel',
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 169, 62, 23)),
+                                    )),
+                                TextButton(
+                                    onPressed: logout,
+                                    child: const Text(
+                                      'log out',
+                                      style: TextStyle(color: Colors.black38),
+                                    ))
+                              ],
+                            ));
+                  },
                   icon: const Icon(PhosphorIconsRegular.signOut),
                   label: const Text(
                     "Log out",
@@ -91,5 +120,3 @@ class _ProfileState extends State<Profile> {
     );
   }
 }
-//will have a button to take you to auth-nav wrapper
-//bookmarks-nav wrapper
