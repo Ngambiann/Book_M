@@ -1,4 +1,5 @@
-import 'package:bookmark/pages/views/profile.dart';
+import 'package:bookmark/pages/screens/notifications.dart';
+
 import 'package:bookmark/pages/views/search.dart';
 
 import 'package:flutter/material.dart';
@@ -28,43 +29,40 @@ class _MainpageState extends State<Explore> {
           Text(
             "Hidden gem!",
             style:
-                TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
+                TextStyle(color:Color.fromARGB(255, 185, 85, 30), fontWeight: FontWeight.bold),
             textAlign: TextAlign.start,
           ),
         ]),
         actions: [
           IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const Profile()));
-              },
-              icon: const Icon(PhosphorIconsBold.user),hoverColor:const Color.fromARGB(255, 159, 52, 14) ,),
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const Notifications()));
+            },
+            icon: const Icon(PhosphorIconsRegular.bellSimple),
+            
+          ),
         ],
       ),
-      body:  Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextFormField(
-              enableSuggestions: true,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(45)),
-                  labelText: "Search for hidden gem",
-                  labelStyle: const TextStyle(color: Colors.black54),
-                  fillColor: const Color.fromARGB(255, 159, 52, 14),
-                  iconColor: Colors.black87,
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const Search()));
-                      },
-                      icon: const Icon(Icons.search_rounded))),
-            ),
-            
-          ],
-        ),
-      
-      
+      body: ListView(
+        children: [
+          TextFormField(
+            enableSuggestions: true,
+            decoration: InputDecoration(
+                border:  OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                labelText: "Search for hidden gem",
+                labelStyle: const TextStyle(color: Colors.black54),
+                fillColor: const Color.fromARGB(255, 159, 52, 14),
+                iconColor: Colors.black87,
+                suffixIcon: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Search()));
+                    },
+                    icon: const Icon(Icons.search_rounded))),
+          ),
+        ],
+      ),
     );
   }
 }

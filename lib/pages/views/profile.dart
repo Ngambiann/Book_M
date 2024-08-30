@@ -1,12 +1,16 @@
 import 'package:bookmark/pages/authpages/login.dart';
 import 'package:bookmark/pages/screens/about.dart';
+import 'package:bookmark/pages/screens/favourites.dart';
 import 'package:bookmark/pages/screens/get_help.dart';
 
 import 'package:bookmark/pages/screens/settings.dart';
+import 'package:bookmark/pages/screens/bookmark.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:share_plus/share_plus.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -15,17 +19,61 @@ class Profile extends StatefulWidget {
   State<Profile> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileState extends State<Profile>
+with TickerProviderStateMixin  {
+  late TabController tabController;
+   @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 2, vsync: this);
+  }
+  
+  void switchAccount() {}
+  void shareapp() {
+    Share();
+  }
+
   void logout() {
     FirebaseAuth.instance.signOut();
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const Login()));
   }
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      key: scaffoldKey,
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(PhosphorIconsRegular.userGear),
+          onPressed: () {
+            scaffoldKey.currentState?.openDrawer();
+          },
+          tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+        ),
+        bottom: TabBar(
+          isScrollable: true,
+          controller: tabController,
+          tabAlignment: TabAlignment.center, tabs: <Widget>[
+          TextButton.icon(
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const Favourites()));
+            },
+            label: const Text('Favourites'),
+            icon: const Icon(PhosphorIconsRegular.bookmarks),
+          ),
+          TextButton.icon(
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const Bookmark()));
+            },
+            label: const Text('Bookmarks'),
+            icon: const Icon(PhosphorIconsRegular.bookmarks),
+          ),
+        ]),
+      ),
       drawer: Drawer(
         backgroundColor: const Color.fromARGB(136, 238, 134, 61),
         child: ListView(
@@ -49,8 +97,31 @@ class _ProfileState extends State<Profile> {
             ListTile(
               leading: TextButton.icon(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Settings()));
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog.adaptive(
+                              icon: const Icon(PhosphorIconsBold.share),
+                              title:
+                                  const Text('Are you sure you want to leave?'),
+                              actions: [
+                                TextButton(
+                                    onPressed: shareapp,
+                                    child: const Text(
+                                      'share',
+                                      style: TextStyle(color: Colors.black38),
+                                    )),
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text(
+                                      'cancel',
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 169, 62, 23)),
+                                    )),
+                              ],
+                            ));
                   },
                   icon: const Icon(PhosphorIconsRegular.shareNetwork),
                   label: const Text("Share app",
@@ -78,6 +149,14 @@ class _ProfileState extends State<Profile> {
                   label: const Text("About",
                       style: TextStyle(color: Colors.black))),
             ),
+            //switch account
+            ListTile(
+              leading: TextButton.icon(
+                  onPressed: switchAccount,
+                  icon: const Icon(PhosphorIconsRegular.info),
+                  label: const Text("Switch Account",
+                      style: TextStyle(color: Colors.black))),
+            ),
             //Log_out
             ListTile(
               leading: TextButton.icon(
@@ -85,7 +164,8 @@ class _ProfileState extends State<Profile> {
                     showDialog(
                         context: context,
                         builder: (context) => AlertDialog.adaptive(
-                          icon: const Icon(PhosphorIconsBold.heartStraightBreak),
+                              icon: const Icon(
+                                  PhosphorIconsBold.heartStraightBreak),
                               title:
                                   const Text('Are you sure you want to leave?'),
                               actions: [
@@ -116,6 +196,18 @@ class _ProfileState extends State<Profile> {
             )
           ],
         ),
+      ),
+      body: TabBarView(
+        controller: tabController,
+        children: const <Widget>[
+          Center(
+            child: Text("It's cloudy here"),
+          ),
+          Center(
+            child: Text("It's rainy here"),
+          ),
+         
+        ],
       ),
     );
   }

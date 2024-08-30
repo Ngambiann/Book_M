@@ -1,5 +1,7 @@
-import 'dart:math';
 
+
+
+import 'package:bookmark/pages/screens/privacypolicy.dart';
 import 'package:bookmark/pages/views/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -19,8 +21,7 @@ class About extends StatelessWidget {
               children: [
                 IconButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Profile()));
+                      Navigator.pop(context);
                     },
                     icon: const Icon(PhosphorIconsRegular.arrowCircleLeft)),
                 OutlinedButton(
@@ -61,7 +62,11 @@ class About extends StatelessWidget {
             Row(
               children: [
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Privacypolicy()));
+
+                    },
                     child: const Text(
                       "Privacy Policy",
                       style: TextStyle(color: Color.fromARGB(221, 237, 99, 7)),

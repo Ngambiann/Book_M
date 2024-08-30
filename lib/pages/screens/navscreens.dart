@@ -1,5 +1,6 @@
 import 'package:bookmark/pages/views/explore.dart';
-import 'package:bookmark/pages/views/bookmark.dart';
+
+import 'package:bookmark/pages/views/profile.dart';
 import 'package:bookmark/pages/views/search.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -17,7 +18,7 @@ class _NavState extends State<Navscreens> {
   final _navpages = [
     const Explore(),
     const Search(),
-    const Bookmark(),
+    const Profile(),
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -49,10 +50,10 @@ class _NavState extends State<Navscreens> {
                   color: Color.fromARGB(255, 169, 62, 23)),
               label: 'Search'),
           BottomNavigationBarItem(
-              icon: Icon(PhosphorIconsRegular.bookmarks, color: Colors.black54),
-              activeIcon: Icon(PhosphorIconsBold.bookmarks,
+              icon: Icon(PhosphorIconsRegular.user, color: Colors.black54),
+              activeIcon: Icon(PhosphorIconsBold.user,
                   color: Color.fromARGB(255, 169, 62, 23)),
-              label: 'Bookmarks')
+              label: 'Profile')
         ],
       ),
       body: _navpages[_selectedIndex],

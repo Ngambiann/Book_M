@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class Bookmark extends StatefulWidget {
@@ -11,9 +12,16 @@ class _BookmarkState extends State<Bookmark> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Bookmark'),
-      ),
+      
+    body: ListView(
+      children: const [
+ Text('Bookmarks',
+                    style: TextStyle(
+                        color: Color.fromARGB(221, 237, 99, 7),
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold)),
+      ],
+    ),
     );
   }
 }

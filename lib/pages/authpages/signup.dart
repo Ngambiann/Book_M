@@ -16,6 +16,10 @@ class Signup extends StatefulWidget {
 }
 
 class _SignInState extends State<Signup> {
+  
+
+
+
   final TextEditingController emailAddressController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
@@ -155,6 +159,8 @@ class _SignInState extends State<Signup> {
               const SizedBox(
                 height: 10,
               ),
+              //terms&&conditions
+         
               //sign up button
               ElevatedButton(
                   style: const ButtonStyle(

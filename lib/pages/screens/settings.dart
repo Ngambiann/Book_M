@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -14,14 +14,19 @@ class _NotificationsState extends State<Settings> {
   TextEditingController oldPasswordcontroller = TextEditingController();
   TextEditingController newPasswordcontroller = TextEditingController();
   TextEditingController confirmNewPasswordcontroller = TextEditingController();
+ void displaymessagetoUser(String message,context){
 
-  void changePassword()async{
-    FirebaseAuth.instance.currentUser!.updatePassword(newPasswordcontroller.text.trim());
-    if(newPasswordcontroller!=confirmNewPasswordcontroller){
+ } 
+void changePassword(){
+  if(confirmNewPasswordcontroller != newPasswordcontroller){
+    displaymessagetoUser("Passwords don't match",context);
+  }else{}
 
-    }
-    
   }
+
+    
+
+
 
   //toggle on && off
   bool on = true;
@@ -30,9 +35,8 @@ class _NotificationsState extends State<Settings> {
   bool onAn = true;
   bool onNa = true;
   bool onTa = true;
-
-  void deleteAccount() {
-    FirebaseAuth.instance.currentUser!.delete();
+ 
+  void deleteAccount()async {
   }
 
   @override
@@ -207,6 +211,21 @@ class _NotificationsState extends State<Settings> {
                                       hintText: ("Confirm new Password"),
                                     ),
                                   ),
+                                  TextButton(
+                                    child: const Text('Cancel',
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 169, 62, 23))),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  TextButton(
+                                      onPressed: changePassword,
+                                      child: const Text('Change',
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 169, 62, 23))))
                                 ],
                               ));
                     },
@@ -225,7 +244,7 @@ class _NotificationsState extends State<Settings> {
 
                                        Your app data will also be deleted and you won't be able to retrieve it.
 
-                                       Since this is a security-sensitive operation, you eventually are asked to login before your account can be deleted.'''),
+                                       '''),
                                 actions: [
                                   TextButton(
                                     child: const Text('Cancel',
@@ -241,21 +260,6 @@ class _NotificationsState extends State<Settings> {
                                       child: const Text('Delete',
                                           style: TextStyle(
                                               color: Colors.black38))),
-                                  TextButton(
-                                    child: const Text('Cancel',
-                                        style: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 169, 62, 23))),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                  TextButton(
-                                      onPressed: changePassword,
-                                      child: const Text('Change',
-                                          style: TextStyle(
-                                              color: Color.fromARGB(
-                                                  255, 169, 62, 23))))
                                 ],
                               ));
                     },
