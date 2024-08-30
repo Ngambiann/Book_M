@@ -1,4 +1,4 @@
-import 'package:bookmark/pages/authpages/auth.dart';
+import 'package:bookmark/pages/views/authviews/auth.dart';
 
 import 'package:bookmark/theme/darkmode.dart';
 import 'package:bookmark/theme/lightmode.dart';

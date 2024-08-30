@@ -1,4 +1,4 @@
-import 'package:bookmark/pages/authpages/login.dart';
+import 'package:bookmark/pages/views/authviews/login.dart';
 import 'package:bookmark/pages/screens/about.dart';
 import 'package:bookmark/pages/screens/favourites.dart';
 import 'package:bookmark/pages/screens/get_help.dart';
@@ -57,18 +57,12 @@ with TickerProviderStateMixin  {
           controller: tabController,
           tabAlignment: TabAlignment.center, tabs: <Widget>[
           TextButton.icon(
-            onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const Favourites()));
-            },
+            onPressed: ()=>Favourites,
             label: const Text('Favourites'),
             icon: const Icon(PhosphorIconsRegular.bookmarks),
           ),
           TextButton.icon(
-            onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const Bookmark()));
-            },
+            onPressed:()=>Bookmark,
             label: const Text('Bookmarks'),
             icon: const Icon(PhosphorIconsRegular.bookmarks),
           ),
@@ -201,10 +195,10 @@ with TickerProviderStateMixin  {
         controller: tabController,
         children: const <Widget>[
           Center(
-            child: Text("It's cloudy here"),
+            child:Favourites()
           ),
           Center(
-            child: Text("It's rainy here"),
+            child:Bookmark() 
           ),
          
         ],

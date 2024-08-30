@@ -1,8 +1,5 @@
-
-
-
 import 'package:bookmark/pages/screens/privacypolicy.dart';
-import 'package:bookmark/pages/views/profile.dart';
+
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -65,7 +62,6 @@ class About extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Privacypolicy()));
-
                     },
                     child: const Text(
                       "Privacy Policy",

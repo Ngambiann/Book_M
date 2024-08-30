@@ -1,4 +1,4 @@
-import 'package:bookmark/pages/authpages/login.dart';
+import 'package:bookmark/pages/views/authviews/login.dart';
 import 'package:bookmark/pages/screens/navscreens.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';

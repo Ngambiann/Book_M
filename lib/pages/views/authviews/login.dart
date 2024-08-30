@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:bookmark/pages/authpages/signup.dart';
-import 'package:bookmark/pages/authpages/forgotpassword.dart';
+import 'package:bookmark/pages/views/authviews/signup.dart';
+import 'package:bookmark/pages/views/authviews/forgotpassword.dart';
 import 'package:bookmark/pages/screens/navscreens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

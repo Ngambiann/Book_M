@@ -10,11 +10,7 @@ class Forgotpassword extends StatefulWidget {
 
 class _ForgotpasswordState extends State<Forgotpassword> {
   final TextEditingController emailAddressController= TextEditingController();
-/*Future <void> reset() async {
-  try{
-    FirebaseAuth.instance.sendPasswordResetEmail(email:emailAddressController.text.trim());
-  }on FirebaseException catch (e) {}
-}*/
+
 
   @override
   Widget build(BuildContext context) {

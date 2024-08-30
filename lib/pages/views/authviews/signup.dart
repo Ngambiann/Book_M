@@ -1,6 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:bookmark/pages/authpages/login.dart';
+import 'package:bookmark/pages/views/authviews/login.dart';
 import 'package:bookmark/pages/screens/navscreens.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -76,6 +76,7 @@ class _SignInState extends State<Signup> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(actions: [
+          //skip button
           TextButton(
               style: const ButtonStyle(
                   backgroundColor:
@@ -85,7 +86,7 @@ class _SignInState extends State<Signup> {
                     builder: (context) => const Navscreens()));
               },
               child:
-                  const Text('Skip', style: TextStyle(color: Colors.white70)))
+                  const Text('Explore as Guest', style: TextStyle(color: Colors.white70)))
         ]),
         body: Padding(
           padding: const EdgeInsets.all(35),
