@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class Signup extends StatefulWidget {
@@ -16,9 +17,17 @@ class Signup extends StatefulWidget {
 }
 
 class _SignInState extends State<Signup> {
-  
-
-
+  signinwithGoogle() async {
+    GoogleSignInAccount? googleuser = await GoogleSignIn().signIn();
+    GoogleSignInAuthentication? googleAuth = await googleuser?.authentication;
+    AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    UserCredential userCredential =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+    print(userCredential.user?.displayName);
+  }
 
   final TextEditingController emailAddressController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -86,7 +95,7 @@ class _SignInState extends State<Signup> {
                     builder: (context) => const Navscreens()));
               },
               child:
-                  const Text('Explore as Guest', style: TextStyle(color: Colors.white70)))
+                  const Text('skip', style: TextStyle(color: Colors.white70)))
         ]),
         body: Padding(
           padding: const EdgeInsets.all(35),
@@ -161,7 +170,7 @@ class _SignInState extends State<Signup> {
                 height: 10,
               ),
               //terms&&conditions
-         
+
               //sign up button
               ElevatedButton(
                   style: const ButtonStyle(
@@ -191,7 +200,7 @@ class _SignInState extends State<Signup> {
                 style: const ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(
                         Color.fromARGB(136, 238, 134, 61))),
-                onPressed: () {},
+                onPressed: signinwithGoogle,
                 label: const Text("Sign up with Google",
                     style: TextStyle(color: Colors.white70)),
                 icon: const Icon(PhosphorIconsRegular.googleLogo),

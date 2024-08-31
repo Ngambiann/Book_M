@@ -19,15 +19,14 @@ class Profile extends StatefulWidget {
   State<Profile> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile>
-with TickerProviderStateMixin  {
+class _ProfileState extends State<Profile> with TickerProviderStateMixin {
   late TabController tabController;
-   @override
+  @override
   void initState() {
     super.initState();
     tabController = TabController(length: 2, vsync: this);
   }
-  
+
   void switchAccount() {}
   void shareapp() {
     Share();
@@ -53,20 +52,28 @@ with TickerProviderStateMixin  {
           tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
         ),
         bottom: TabBar(
-          isScrollable: true,
-          controller: tabController,
-          tabAlignment: TabAlignment.center, tabs: <Widget>[
-          TextButton.icon(
-            onPressed: ()=>Favourites,
-            label: const Text('Favourites'),
-            icon: const Icon(PhosphorIconsRegular.bookmarks),
-          ),
-          TextButton.icon(
-            onPressed:()=>Bookmark,
-            label: const Text('Bookmarks'),
-            icon: const Icon(PhosphorIconsRegular.bookmarks),
-          ),
-        ]),
+            isScrollable: true,
+            controller: tabController,
+            tabAlignment: TabAlignment.center,
+            tabs: <Widget>[
+              TextButton.icon(
+                onPressed: () {
+                  tabController.animation;
+                  
+                },
+                label: const Text('Favourites',
+                    style: TextStyle(color: Colors.black54)),
+                icon: const Icon(PhosphorIconsRegular.bookmarks),
+              ),
+              TextButton.icon(
+                onPressed: () {
+                  tabController.indexIsChanging;
+                },
+                label: const Text('Bookmarks',
+                    style: TextStyle(color: Colors.black54)),
+                icon: const Icon(PhosphorIconsRegular.bookmarks),
+              ),
+            ]),
       ),
       drawer: Drawer(
         backgroundColor: const Color.fromARGB(136, 238, 134, 61),
@@ -95,8 +102,6 @@ with TickerProviderStateMixin  {
                         context: context,
                         builder: (context) => AlertDialog.adaptive(
                               icon: const Icon(PhosphorIconsBold.share),
-                              title:
-                                  const Text('Are you sure you want to leave?'),
                               actions: [
                                 TextButton(
                                     onPressed: shareapp,
@@ -194,13 +199,8 @@ with TickerProviderStateMixin  {
       body: TabBarView(
         controller: tabController,
         children: const <Widget>[
-          Center(
-            child:Favourites()
-          ),
-          Center(
-            child:Bookmark() 
-          ),
-         
+          Center(child: Favourites()),
+          Center(child: Bookmark()),
         ],
       ),
     );

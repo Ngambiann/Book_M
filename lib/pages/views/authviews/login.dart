@@ -6,6 +6,7 @@ import 'package:bookmark/pages/screens/navscreens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class Login extends StatefulWidget {
@@ -16,6 +17,17 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  signinwithGoogle() async {
+    GoogleSignInAccount? googleuser = await GoogleSignIn().signIn();
+    GoogleSignInAuthentication? googleAuth = await googleuser?.authentication;
+    AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    UserCredential userCredential =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
   bool hideText = true;
   final TextEditingController emailAddressController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -150,7 +162,7 @@ class _LoginState extends State<Login> {
               style: const ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(
                       Color.fromARGB(136, 238, 134, 61))),
-              onPressed: () {},
+              onPressed: signinwithGoogle,
               label: const Text("Continue with Google",
                   style: TextStyle(color: Colors.white70)),
               icon: const Icon(PhosphorIconsRegular.googleLogo),

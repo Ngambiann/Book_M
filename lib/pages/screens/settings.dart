@@ -46,7 +46,7 @@ class _NotificationsState extends State<Settings> {
                       color: Color.fromARGB(221, 237, 99, 7),
                       fontSize: 24,
                       fontWeight: FontWeight.bold)),
-              //match device setting
+//match device setting
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -64,7 +64,7 @@ class _NotificationsState extends State<Settings> {
                           color: const Color.fromARGB(255, 169, 62, 23)))
                 ],
               ),
-              //Dark mode setting
+//Dark mode setting
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -82,7 +82,7 @@ class _NotificationsState extends State<Settings> {
                           color: const Color.fromARGB(255, 169, 62, 23)))
                 ],
               ),
-              //Light mode setting
+//Light mode setting
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -105,7 +105,7 @@ class _NotificationsState extends State<Settings> {
                       color: Color.fromARGB(221, 237, 99, 7),
                       fontSize: 24,
                       fontWeight: FontWeight.bold)),
-              //all notifications
+//all notifications
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -123,7 +123,7 @@ class _NotificationsState extends State<Settings> {
                           color: const Color.fromARGB(255, 169, 62, 23)))
                 ],
               ),
-              //New places/events alerts
+//New places/events alerts
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -141,7 +141,7 @@ class _NotificationsState extends State<Settings> {
                           color: const Color.fromARGB(255, 169, 62, 23)))
                 ],
               ),
-              //trending places/events/shows
+//trending places/events/shows
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -169,8 +169,7 @@ class _NotificationsState extends State<Settings> {
                           color: Color.fromARGB(221, 237, 99, 7),
                           fontSize: 24,
                           fontWeight: FontWeight.bold)),
-
-                  //add account
+//add account
                   TextButton.icon(
                     onPressed: () {},
                     label: const Text(
@@ -181,16 +180,7 @@ class _NotificationsState extends State<Settings> {
                         color: Color.fromARGB(255, 169, 62, 23)),
                   ),
 
-                  //switch account
-                  TextButton.icon(
-                    onPressed: () {},
-                    label: const Text('Switch Account',
-                        style: TextStyle(color: Colors.black)),
-                    icon: const Icon(PhosphorIconsRegular.userSwitch,
-                        color: Color.fromARGB(255, 169, 62, 23)),
-                  ),
-
-                  //change password
+//change password
                   TextButton.icon(
                     label: const Text("Change Password",
                         style: TextStyle(color: Colors.black)),
@@ -254,7 +244,7 @@ class _NotificationsState extends State<Settings> {
                               ));
                     },
                   ),
-                  //Delete account
+//Delete account
                   TextButton.icon(
                     label: const Text(
                       'Delete account',
