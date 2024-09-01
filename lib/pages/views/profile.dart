@@ -1,14 +1,14 @@
 import 'package:bookmark/pages/views/authviews/login.dart';
 import 'package:bookmark/pages/screens/about.dart';
-import 'package:bookmark/pages/screens/favourites.dart';
+
 import 'package:bookmark/pages/screens/get_help.dart';
 
 import 'package:bookmark/pages/screens/settings.dart';
-import 'package:bookmark/pages/screens/bookmark.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -19,30 +19,33 @@ class Profile extends StatefulWidget {
   State<Profile> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> with TickerProviderStateMixin {
-  late TabController tabController;
-  @override
-  void initState() {
-    super.initState();
-    tabController = TabController(length: 2, vsync: this);
-  }
-
+class _ProfileState extends State<Profile> {
+//switch account
   void switchAccount() {}
+
+//share app
   void shareapp() {
     Share();
   }
 
+//logout
   void logout() {
+    GoogleSignIn().signOut();
     FirebaseAuth.instance.signOut();
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const Login()));
   }
+
+//pageview
+  bool isLastPage = false;
+  final _pageController = PageController(initialPage: 2);
 
   var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+//Appbar
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(PhosphorIconsRegular.userGear),
@@ -51,30 +54,27 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
           },
           tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
         ),
-        bottom: TabBar(
-            isScrollable: true,
-            controller: tabController,
-            tabAlignment: TabAlignment.center,
-            tabs: <Widget>[
-              TextButton.icon(
-                onPressed: () {
-                  tabController.animation;
-                  
-                },
-                label: const Text('Favourites',
-                    style: TextStyle(color: Colors.black54)),
-                icon: const Icon(PhosphorIconsRegular.bookmarks),
-              ),
-              TextButton.icon(
-                onPressed: () {
-                  tabController.indexIsChanging;
-                },
-                label: const Text('Bookmarks',
-                    style: TextStyle(color: Colors.black54)),
-                icon: const Icon(PhosphorIconsRegular.bookmarks),
-              ),
-            ]),
+        //headerbuttons
+        title: Row(
+          children: [
+            TextButton(
+              onPressed: () {},
+              child: const Text('Favourites',
+                  style: TextStyle(color: Color.fromARGB(255, 169, 62, 23))),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: const Text('Bookmarks',
+                  style: TextStyle(color: Color.fromARGB(255, 169, 62, 23))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
       ),
+
+//drawer
       drawer: Drawer(
         backgroundColor: const Color.fromARGB(136, 238, 134, 61),
         child: ListView(
@@ -196,13 +196,60 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
           ],
         ),
       ),
-      body: TabBarView(
-        controller: tabController,
-        children: const <Widget>[
-          Center(child: Favourites()),
-          Center(child: Bookmark()),
+
+//body
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() {
+            isLastPage = index == 2;
+          });
+        },
+        scrollDirection: Axis.horizontal,
+        children: [
+          ListView(
+            padding: const EdgeInsets.all(12),
+            children: const [
+              MyCards(
+                tagLine: 'Favourites',
+                imagePath: 'assets/images/artgallery.jpg',
+              )
+            ],
+          ),
+          ListView(
+            padding: const EdgeInsets.all(12),
+            children: const [
+              MyCards(
+                  imagePath: 'assets/images/artgallery.jpg',
+                  tagLine: 'Bookmarks')
+            ],
+          ),
         ],
       ),
     );
   }
 }
+
+class MyCards extends StatelessWidget {
+  final String tagLine;
+  final String imagePath;
+  const MyCards({
+    super.key,
+    required this.imagePath,
+    required this.tagLine,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Image.asset(imagePath),
+          Text(tagLine,style: const TextStyle(color: Colors.amber),)
+        ],
+      ),
+    );
+  }
+}
+//scroll indicator below them
+//page view ting

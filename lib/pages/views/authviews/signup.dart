@@ -17,16 +17,16 @@ class Signup extends StatefulWidget {
 }
 
 class _SignInState extends State<Signup> {
-  signinwithGoogle() async {
+  Future signinwithGoogle() async {
     GoogleSignInAccount? googleuser = await GoogleSignIn().signIn();
-    GoogleSignInAuthentication? googleAuth = await googleuser?.authentication;
-    AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
+    if (googleuser == null) return;
+    GoogleSignInAuthentication? googleAuth = await googleuser.authentication;
+    AuthCredential gUserCredential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
     );
-    UserCredential userCredential =
-        await FirebaseAuth.instance.signInWithCredential(credential);
-    print(userCredential.user?.displayName);
+
+    await FirebaseAuth.instance.signInWithCredential(gUserCredential);
   }
 
   final TextEditingController emailAddressController = TextEditingController();
@@ -67,7 +67,7 @@ class _SignInState extends State<Signup> {
                 password: passwordController.text);
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const Navscreens()));
-//extra user details
+
         await FirebaseFirestore.instance
             .collection('users')
             .doc(userCredential.user!.uid)
@@ -188,7 +188,8 @@ class _SignInState extends State<Signup> {
               const Row(children: [
                 Expanded(child: Divider(thickness: 0.5)),
                 Spacer(),
-                Text("OR", style: TextStyle(fontSize: 15, color: Colors.black)),
+                Text("Or Sign up with",
+                    style: TextStyle(fontSize: 12, color: Colors.black)),
                 Spacer(),
                 Expanded(child: Divider(thickness: 0.5)),
               ]),
@@ -196,12 +197,13 @@ class _SignInState extends State<Signup> {
                 height: 10,
               ),
               //with google
+
               ElevatedButton.icon(
                 style: const ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(
                         Color.fromARGB(136, 238, 134, 61))),
                 onPressed: signinwithGoogle,
-                label: const Text("Sign up with Google",
+                label: const Text(" Google",
                     style: TextStyle(color: Colors.white70)),
                 icon: const Icon(PhosphorIconsRegular.googleLogo),
               ),
@@ -211,20 +213,11 @@ class _SignInState extends State<Signup> {
                     backgroundColor: WidgetStatePropertyAll(
                         Color.fromARGB(136, 238, 134, 61))),
                 onPressed: () {},
-                label: const Text("Sign up with Tiktok",
+                label: const Text("Tiktok",
                     style: TextStyle(color: Colors.white70)),
                 icon: const Icon(PhosphorIconsRegular.tiktokLogo),
               ),
-              //with IG
-              ElevatedButton.icon(
-                style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(
-                        Color.fromARGB(136, 238, 134, 61))),
-                onPressed: () {},
-                label: const Text("Sign up with instagram",
-                    style: TextStyle(color: Colors.white70)),
-                icon: const Icon(PhosphorIconsRegular.instagramLogo),
-              ),
+
               const SizedBox(
                 height: 40,
               ),

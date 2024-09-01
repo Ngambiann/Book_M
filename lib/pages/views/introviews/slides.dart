@@ -17,6 +17,7 @@ class _SlidesState extends State<Slides> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(135, 207, 101, 25),
+//skip button
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         actions: [
@@ -51,18 +52,18 @@ class _SlidesState extends State<Slides> {
               });
             },
 //diff slides
-            children: const [
+            children: [
               SlidePages(
-                title: 'Find your next hangout spot',
-                description: 'Discover and save all',
+                imagePath: 'assets/images/introbackground.jpg',
+                tagLine: 'Find your next hangout spot',
               ),
               SlidePages(
-                title: 'Find your next hangout spot',
-                description: 'Discover and save all',
+                imagePath: 'assets/images/introbackground.jpg',
+                tagLine: 'Find your next hangout spot',
               ),
               SlidePages(
-                title: 'Find your next hangout spot',
-                description: 'Discover and save all',
+                imagePath: 'assets/images/introbackground.jpg',
+                tagLine: 'Find your next hangout spot',
               ),
             ],
           )),
@@ -87,7 +88,7 @@ class _SlidesState extends State<Slides> {
                   dotColor: Colors.black54),
             ),
           ),
-
+//next/done button
           Row(mainAxisAlignment: MainAxisAlignment.end, children: [
             ElevatedButton(
                 style: const ButtonStyle(
@@ -122,20 +123,20 @@ class _SlidesState extends State<Slides> {
 
 //pages template class
 class SlidePages extends StatelessWidget {
-  final String title;
+ final  String tagLine;
+  final String imagePath;
 
-  final String description;
   const SlidePages({
     super.key,
-    required this.title,
-    required this.description,
+    required this.tagLine,
+    required this.imagePath,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
+        /*Expanded(
             child: Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -146,18 +147,17 @@ class SlidePages extends StatelessWidget {
         )),
         const SizedBox(
           height: 40,
-        ),
-        Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
-        ),
+        ),*/
+//image
+        Image.asset(imagePath),
         const SizedBox(
           height: 20,
         ),
+//tagline
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Text(
-            description,
+            tagLine,
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 16, color: Colors.black87),
           ),

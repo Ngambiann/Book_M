@@ -18,14 +18,15 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   signinwithGoogle() async {
+    
     GoogleSignInAccount? googleuser = await GoogleSignIn().signIn();
-    GoogleSignInAuthentication? googleAuth = await googleuser?.authentication;
-    AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
+    if (googleuser == null) return;
+    GoogleSignInAuthentication? googleAuth = await googleuser.authentication;
+    AuthCredential userCredential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
     );
-    UserCredential userCredential =
-        await FirebaseAuth.instance.signInWithCredential(credential);
+     await FirebaseAuth.instance.signInWithCredential(userCredential);
   }
 
   bool hideText = true;
@@ -54,7 +55,7 @@ class _LoginState extends State<Login> {
           MaterialPageRoute(builder: (context) => const Navscreens()));
     } on FirebaseAuthException {
       displayMessageToUser(
-          'Wrong password/email.Check credentials again', context);
+          'Wrong password/Email.Check credentials again', context);
     }
   }
 
@@ -150,7 +151,8 @@ class _LoginState extends State<Login> {
             const Row(children: [
               Expanded(child: Divider(thickness: 0.5)),
               Spacer(),
-              Text("OR", style: TextStyle(fontSize: 15, color: Colors.black)),
+              Text("Or Continue With",
+                  style: TextStyle(fontSize: 12, color: Colors.black)),
               Spacer(),
               Expanded(child: Divider(thickness: 0.5)),
             ]),
@@ -163,8 +165,8 @@ class _LoginState extends State<Login> {
                   backgroundColor: WidgetStatePropertyAll(
                       Color.fromARGB(136, 238, 134, 61))),
               onPressed: signinwithGoogle,
-              label: const Text("Continue with Google",
-                  style: TextStyle(color: Colors.white70)),
+              label:
+                  const Text("Google", style: TextStyle(color: Colors.white70)),
               icon: const Icon(PhosphorIconsRegular.googleLogo),
             ),
             //with tiktok
@@ -173,20 +175,11 @@ class _LoginState extends State<Login> {
                   backgroundColor: WidgetStatePropertyAll(
                       Color.fromARGB(136, 238, 134, 61))),
               onPressed: () {},
-              label: const Text("Continue with Tiktok",
-                  style: TextStyle(color: Colors.white70)),
+              label:
+                  const Text("Tiktok", style: TextStyle(color: Colors.white70)),
               icon: const Icon(PhosphorIconsRegular.tiktokLogo),
             ),
-            //with IG
-            ElevatedButton.icon(
-              style: const ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(
-                      Color.fromARGB(136, 238, 134, 61))),
-              onPressed: () {},
-              label: const Text("Continue with Instagram",
-                  style: TextStyle(color: Colors.white70)),
-              icon: const Icon(PhosphorIconsRegular.instagramLogo),
-            ),
+
             const SizedBox(
               height: 60,
             ),
