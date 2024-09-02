@@ -1,8 +1,9 @@
 import 'package:bookmark/dummydata/categories.dart';
-import 'package:bookmark/dummydata/destinations.dart';
+
+import 'package:bookmark/dummydata/gems.dart';
 import 'package:bookmark/pages/screens/notifications.dart';
 
-import 'package:bookmark/pages/views/search.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -20,7 +21,7 @@ class _MainpageState extends State<Explore> {
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: PreferredSize(
-        preferredSize:const  Size.fromHeight(30),
+        preferredSize: const Size.fromHeight(30),
         child: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
@@ -46,25 +47,7 @@ class _MainpageState extends State<Explore> {
         padding: const EdgeInsets.all(12.0),
         child: ListView(
           children: [
-            /*TextFormField(
-              enableSuggestions: true,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30)),
-                  labelText: "Search for hidden gem",
-                  labelStyle: const TextStyle(color: Colors.black54),
-                  fillColor: const Color.fromARGB(255, 159, 52, 14),
-                  iconColor: Colors.black87,
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const Search()));
-                      },
-                      icon: const Icon(Icons.search_rounded))),
-            ),*/
-            /*const SizedBox(
-              height: 15,
-            ),*/
+            
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
