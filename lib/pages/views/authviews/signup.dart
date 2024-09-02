@@ -89,7 +89,7 @@ class _SignInState extends State<Signup> {
           TextButton(
               style: const ButtonStyle(
                   backgroundColor:
-                      WidgetStatePropertyAll(Color.fromARGB(255, 169, 62, 23))),
+                      WidgetStatePropertyAll(Color.fromARGB(255, 193, 99, 36))),
               onPressed: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => const Navscreens()));
@@ -167,7 +167,7 @@ class _SignInState extends State<Signup> {
                               : PhosphorIconsRegular.eye))),
                   obscureText: hideTextcp),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               //terms&&conditions
 
@@ -175,14 +175,14 @@ class _SignInState extends State<Signup> {
               ElevatedButton(
                   style: const ButtonStyle(
                       backgroundColor: WidgetStatePropertyAll(
-                          Color.fromARGB(255, 169, 62, 23))),
+                          Color.fromARGB(255, 193, 99, 36))),
                   onPressed: signup,
                   child: const Text(
                     "Sign Up",
                     style: TextStyle(color: Colors.white70),
                   )),
               const SizedBox(
-                height: 10,
+                height: 40,
               ),
               //divider
               const Row(children: [
@@ -194,29 +194,31 @@ class _SignInState extends State<Signup> {
                 Expanded(child: Divider(thickness: 0.5)),
               ]),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               //with google
 
-              ElevatedButton.icon(
-                style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(
-                        Color.fromARGB(136, 238, 134, 61))),
-                onPressed: signinwithGoogle,
-                label: const Text(" Google",
-                    style: TextStyle(color: Colors.white70)),
-                icon: const Icon(PhosphorIconsRegular.googleLogo),
-              ),
-              //with tiktok
-              ElevatedButton.icon(
-                style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(
-                        Color.fromARGB(136, 238, 134, 61))),
-                onPressed: () {},
-                label: const Text("Tiktok",
-                    style: TextStyle(color: Colors.white70)),
-                icon: const Icon(PhosphorIconsRegular.tiktokLogo),
-              ),
+              Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+//with google
+                SizedBox.square(
+                    child: ElevatedButton(
+                        style: const ButtonStyle(
+                            backgroundColor: WidgetStatePropertyAll(
+                                Color.fromARGB(133, 232, 125, 48))),
+                        onPressed: signinwithGoogle,
+                        child: const Icon(PhosphorIconsRegular.googleLogo))),
+//with tiktok
+                SizedBox.square(
+                    child: ElevatedButton(
+                        style: const ButtonStyle(
+                            backgroundColor: WidgetStatePropertyAll(
+                                Color.fromARGB(133, 230, 113, 29))),
+                        onPressed: () {},
+                        child: const Icon(PhosphorIconsRegular.tiktokLogo)))
+              ],
+            ),
 
               const SizedBox(
                 height: 40,

@@ -1,3 +1,4 @@
+import 'package:bookmark/dummydata/destinations.dart';
 import 'package:bookmark/pages/views/authviews/login.dart';
 import 'package:bookmark/pages/screens/about.dart';
 
@@ -11,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -44,6 +46,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white70,
       key: scaffoldKey,
 //Appbar
       appBar: AppBar(
@@ -56,8 +59,20 @@ class _ProfileState extends State<Profile> {
         ),
         //headerbuttons
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextButton(
+            SmoothPageIndicator(controller: _pageController, count: 2,
+            onDotClicked: (index) {
+                _pageController.animateToPage(index,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeIn);
+              },
+              effect:const ExpandingDotsEffect(
+                  activeDotColor: Color.fromARGB(255, 146, 62, 6),
+                  dotHeight: 10.0,
+                  dotWidth: 21.0,
+                  dotColor: Colors.black54)),
+            /*TextButton(
               onPressed: () {},
               child: const Text('Favourites',
                   style: TextStyle(color: Color.fromARGB(255, 169, 62, 23))),
@@ -66,7 +81,7 @@ class _ProfileState extends State<Profile> {
               onPressed: () {},
               child: const Text('Bookmarks',
                   style: TextStyle(color: Color.fromARGB(255, 169, 62, 23))),
-            ),
+            ),*/
             const SizedBox(
               height: 10,
             ),
@@ -209,19 +224,103 @@ class _ProfileState extends State<Profile> {
         children: [
           ListView(
             padding: const EdgeInsets.all(12),
-            children: const [
-              MyCards(
-                tagLine: 'Favourites',
-                imagePath: 'assets/images/artgallery.jpg',
-              )
+            children: [
+              MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
+                  MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
+                  MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
+                  MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
+                  MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
+                  MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
             ],
           ),
           ListView(
             padding: const EdgeInsets.all(12),
-            children: const [
-              MyCards(
-                  imagePath: 'assets/images/artgallery.jpg',
-                  tagLine: 'Bookmarks')
+            children:  [
+            MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
+                  MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
+                  MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
+                  MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
+                  MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
+                  MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
+                  MyCard(
+                  nameofPlace: "Ardhi Gallery",
+                  imagePath: "assets/images/artgallery.jpg",
+                  location: "parallel Four,OleSangale Road",
+                  onSelected: () {},
+                  rating: "4.0",
+                  category: "Art Gallery"),
             ],
           ),
         ],
@@ -230,26 +329,6 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-class MyCards extends StatelessWidget {
-  final String tagLine;
-  final String imagePath;
-  const MyCards({
-    super.key,
-    required this.imagePath,
-    required this.tagLine,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Image.asset(imagePath),
-          Text(tagLine,style: const TextStyle(color: Colors.amber),)
-        ],
-      ),
-    );
-  }
-}
 //scroll indicator below them
 //page view ting

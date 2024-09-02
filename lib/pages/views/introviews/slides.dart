@@ -16,29 +16,10 @@ class _SlidesState extends State<Slides> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(135, 207, 101, 25),
-//skip button
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        actions: [
-          ElevatedButton(
-              style: const ButtonStyle(
-                  backgroundColor:
-                      WidgetStatePropertyAll(Color.fromARGB(255, 195, 89, 36))),
-              onPressed: () {
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const Signup()));
-              },
-              child: const Text(
-                'Skip',
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white70,
-                    fontWeight: FontWeight.bold),
-              )),
-        ],
-      ),
-      extendBodyBehindAppBar: true,
+      //backgroundColor: const Color.fromARGB(135, 207, 101, 25),
+
+//body
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -53,27 +34,79 @@ class _SlidesState extends State<Slides> {
             },
 //diff slides
             children: [
-              SlidePages(
-                imagePath: 'assets/images/introbackground.jpg',
-                tagLine: 'Find your next hangout spot',
+              //-#1
+              ListView(
+                padding: const EdgeInsets.all(25),
+                children: [
+                  const SizedBox(
+                    height: 380,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(25),
+                    height: 200,
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(134, 225, 102, 15),
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(45)),
+                    child: const Text('Discover cool hidden gems in the city',
+                        style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                ],
               ),
-              SlidePages(
-                imagePath: 'assets/images/introbackground.jpg',
-                tagLine: 'Find your next hangout spot',
+              //-#2
+              ListView(
+                padding: const EdgeInsets.all(12),
+                children: [
+                  const SizedBox(
+                    height: 380,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(25),
+                    height: 200,
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(134, 225, 102, 15),
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(45)),
+                    child: const Text(
+                        'Save all your hidden gems for offline access',
+                        style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                ],
               ),
-              SlidePages(
-                imagePath: 'assets/images/introbackground.jpg',
-                tagLine: 'Find your next hangout spot',
-              ),
+              //-#3
+              ListView(
+                padding: const EdgeInsets.all(12),
+                children: [
+                  const SizedBox(
+                    height: 380,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(25),
+                    height: 200,
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(134, 225, 102, 15),
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(45)),
+                    child: const Text(
+                        "Let's get the trip out of the group chat!",
+                        style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 38,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                ],
+              )
             ],
           )),
-
-          const SizedBox(
-            height: 100,
-          ),
-//indicator
-          Center(
-            child: SmoothPageIndicator(
+          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            //indicator
+            SmoothPageIndicator(
               controller: _controller,
               count: 3,
               onDotClicked: (index) {
@@ -87,30 +120,34 @@ class _SlidesState extends State<Slides> {
                   dotWidth: 12.0,
                   dotColor: Colors.black54),
             ),
-          ),
+
 //next/done button
-          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            ElevatedButton(
-                style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(
-                        Color.fromARGB(255, 195, 89, 36))),
-                onPressed: isLastPage
-                    ? () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Signup()));
-                      }
-                    : () {
-                        _controller.nextPage(
-                            duration: const Duration(milliseconds: 500),
-                            curve: Curves.easeIn);
-                      },
-                child: Text(
-                  isLastPage ? 'Done' : 'Next',
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
-                )),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                ElevatedButton(
+                    style: const ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(
+                            Color.fromARGB(255, 195, 89, 36))),
+                    onPressed: isLastPage
+                        ? () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Signup()));
+                          }
+                        : () {
+                            _controller.nextPage(
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeIn);
+                          },
+                    child: Text(
+                      isLastPage ? 'Get Started' : 'Next',
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
+                    )),
+              ],
+            ),
           ]),
           const SizedBox(
             height: 15,
@@ -122,8 +159,8 @@ class _SlidesState extends State<Slides> {
 }
 
 //pages template class
-class SlidePages extends StatelessWidget {
- final  String tagLine;
+/*class SlidePages extends StatelessWidget {
+  final String tagLine;
   final String imagePath;
 
   const SlidePages({
@@ -136,18 +173,15 @@ class SlidePages extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        /*Expanded(
+        Expanded(
             child: Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(20),
-              bottomLeft: Radius.circular(20),
-            ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(145),
           ),
         )),
         const SizedBox(
           height: 40,
-        ),*/
+        ),
 //image
         Image.asset(imagePath),
         const SizedBox(
@@ -168,4 +202,4 @@ class SlidePages extends StatelessWidget {
       ],
     );
   }
-}
+}*/

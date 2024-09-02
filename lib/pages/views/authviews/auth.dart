@@ -14,21 +14,17 @@ class Auth extends StatelessWidget {
       body: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
-            //logged in user
-            if (snapshot.hasError) {
-              return Text(snapshot.error.toString());
-            }
             if (snapshot.connectionState == ConnectionState.active) {
               if (snapshot.data == null) {
-                return const Signup();
+                return const Slides();
               } else {
                 return const Navscreens();
               }
+            } if (snapshot.hasError) {
+              return Text(snapshot.error.toString());
             }
-
-            //not logged in user
             else {
-              return const Slides();
+              return const Signup();
             }
           }),
     );

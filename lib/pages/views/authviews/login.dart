@@ -18,7 +18,6 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   signinwithGoogle() async {
-    
     GoogleSignInAccount? googleuser = await GoogleSignIn().signIn();
     if (googleuser == null) return;
     GoogleSignInAuthentication? googleAuth = await googleuser.authentication;
@@ -26,7 +25,7 @@ class _LoginState extends State<Login> {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-     await FirebaseAuth.instance.signInWithCredential(userCredential);
+    await FirebaseAuth.instance.signInWithCredential(userCredential);
   }
 
   bool hideText = true;
@@ -76,7 +75,7 @@ class _LoginState extends State<Login> {
               child: const Text(
                 'Welcome back!',
                 style: TextStyle(
-                    fontSize: 35, color: Color.fromARGB(255, 169, 62, 23)),
+                    fontSize: 35, color: Color.fromARGB(255, 169, 81, 23)),
               ),
             ),
             const SizedBox(
@@ -133,11 +132,11 @@ class _LoginState extends State<Login> {
                       },
                   )),
                 ),
-                //login button
+                //login child
                 ElevatedButton(
                     style: const ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(
-                            Color.fromARGB(255, 169, 62, 23))),
+                            Color.fromARGB(255, 193, 99, 36))),
                     onPressed: login,
                     child: const Text.rich(TextSpan(
                         text: "Login",
@@ -145,7 +144,7 @@ class _LoginState extends State<Login> {
               ],
             ),
             const SizedBox(
-              height: 15,
+              height: 35,
             ),
             //divider
             const Row(children: [
@@ -157,31 +156,33 @@ class _LoginState extends State<Login> {
               Expanded(child: Divider(thickness: 0.5)),
             ]),
             const SizedBox(
-              height: 20,
+              height: 35,
             ),
-            //with google
-            ElevatedButton.icon(
-              style: const ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(
-                      Color.fromARGB(136, 238, 134, 61))),
-              onPressed: signinwithGoogle,
-              label:
-                  const Text("Google", style: TextStyle(color: Colors.white70)),
-              icon: const Icon(PhosphorIconsRegular.googleLogo),
-            ),
-            //with tiktok
-            ElevatedButton.icon(
-              style: const ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(
-                      Color.fromARGB(136, 238, 134, 61))),
-              onPressed: () {},
-              label:
-                  const Text("Tiktok", style: TextStyle(color: Colors.white70)),
-              icon: const Icon(PhosphorIconsRegular.tiktokLogo),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+//with google
+                SizedBox.square(
+                    child: ElevatedButton(
+                        style: const ButtonStyle(
+                            backgroundColor: WidgetStatePropertyAll(
+                                Color.fromARGB(133, 232, 125, 48))),
+                        onPressed: signinwithGoogle,
+                        child: const Icon(PhosphorIconsRegular.googleLogo))),
+//with tiktok
+                SizedBox.square(
+                    child: ElevatedButton(
+                        style: const ButtonStyle(
+                            backgroundColor: WidgetStatePropertyAll(
+                                Color.fromARGB(133, 230, 113, 29))),
+                        onPressed: () {},
+                        child: const Icon(PhosphorIconsRegular.tiktokLogo)))
+              ],
             ),
 
             const SizedBox(
-              height: 60,
+              height: 35,
             ),
 
             Text.rich(

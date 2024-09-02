@@ -14,21 +14,10 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Filter()));
-                },
-                icon: const Icon(PhosphorIconsRegular.funnelSimple)),
-          ],
-        ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+      backgroundColor: Colors.white70,
+     
+      body:ListView(
+       
         children: [
           TextFormField(
             controller: searchController,
@@ -48,19 +37,9 @@ class _SearchState extends State<Search> {
                     icon: const Icon(Icons.search_rounded))),
             onChanged: (value) {},
           ),
-          Visibility(
-            visible: searchController.text.isEmpty ? false : true,
-            child: Expanded(
-                child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {},
-                        child: Text("location$index"),
-                      );
-                    })),
-          ),
+
+
+          
         ],
       ),
     );
