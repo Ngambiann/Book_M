@@ -3,6 +3,7 @@
 import 'package:bookmark/pages/views/authviews/signup.dart';
 import 'package:bookmark/pages/views/authviews/forgotpassword.dart';
 import 'package:bookmark/pages/screens/navscreens.dart';
+import 'package:bookmark/pages/views/authviews/tiktokdemo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
@@ -119,7 +120,6 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GestureDetector(
-                  onTap: () {},
                   child: Text.rich(TextSpan(
                     text: "Forgot password",
                     style: const TextStyle(
@@ -176,7 +176,9 @@ class _LoginState extends State<Login> {
                         style: const ButtonStyle(
                             backgroundColor: WidgetStatePropertyAll(
                                 Color.fromARGB(133, 230, 113, 29))),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const Tiktokdemo()));
+                        },
                         child: const Icon(PhosphorIconsRegular.tiktokLogo)))
               ],
             ),

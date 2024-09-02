@@ -18,7 +18,7 @@ class FirestoreDestinations {
 //R
   Stream<QuerySnapshot> getDestinationsStream() {
     final destinationsStream =
-        destinations.orderBy('DateTime', descending: false).snapshots();
+        destinations.orderBy('nameofPlace').snapshots();
     return destinationsStream;
   }
 

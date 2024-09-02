@@ -2,6 +2,7 @@
 
 import 'package:bookmark/pages/views/authviews/login.dart';
 import 'package:bookmark/pages/screens/navscreens.dart';
+import 'package:bookmark/pages/views/authviews/tiktokdemo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
@@ -215,7 +216,9 @@ class _SignInState extends State<Signup> {
                         style: const ButtonStyle(
                             backgroundColor: WidgetStatePropertyAll(
                                 Color.fromARGB(133, 230, 113, 29))),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const Tiktokdemo()));
+                        },
                         child: const Icon(PhosphorIconsRegular.tiktokLogo)))
               ],
             ),

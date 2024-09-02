@@ -24,6 +24,9 @@ class MyCard extends StatefulWidget {
 }
 
 class _MyCardState extends State<MyCard> {
+  bool _isFavourite = false;
+  bool _isBookmarked = false;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -49,38 +52,38 @@ class _MyCardState extends State<MyCard> {
               ),
 //category tag
 
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: TextButton.icon(
-                              style: const ButtonStyle(
-                                  side: WidgetStatePropertyAll(BorderSide(
-                                      width: 1,
-                                      color: Colors.black26,
-                                      strokeAlign:
-                                          BorderSide.strokeAlignCenter))),
-                              onPressed: () {},
-                              label: Text(
-                                widget.category,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: TextButton.icon(
+                  style: const ButtonStyle(
+                      side: WidgetStatePropertyAll(BorderSide(
+                          width: 1,
+                          color: Colors.black26,
+                          strokeAlign: BorderSide.strokeAlignCenter))),
+                  onPressed: () {},
+                  label: Text(
+                    widget.category,
+                    style: const TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
 //Favourites button
+
               Align(
                 alignment: Alignment.topRight,
                 child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        
-                      });
-                      
-                    },
-                    icon: const Icon(
-                      PhosphorIconsBold.heart,
-                      color: Colors.white,
-                    )),
+                  onPressed: () {
+                    setState(() {
+                      _isFavourite = !_isFavourite;
+                    });
+                  },
+                  icon: (_isFavourite
+                      ? const Icon(PhosphorIconsFill.heart)
+                      : const Icon(PhosphorIconsRegular.heart)),
+                  color: const Color.fromARGB(255, 231, 110, 24),
+                ),
               )
             ],
           ),
@@ -163,39 +166,37 @@ class _MyCardState extends State<MyCard> {
                               })
                       ])),
 //five-star rating
-                      
-                          Align(
-                            alignment: Alignment.bottomRight,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                color: const Color.fromARGB(255, 241, 160, 85),
-                              ),
-                              width: 40,
-                              height: 20,
-                              child: Row(
-                                children: [
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    widget.rating,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  const Icon(
-                                    PhosphorIconsFill.star,
-                                    size: 11,
-                                    color: Colors.black,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 150,
-                          ),
 
-                        
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: const Color.fromARGB(255, 241, 160, 85),
+                          ),
+                          width: 40,
+                          height: 20,
+                          child: Row(
+                            children: [
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                widget.rating,
+                                textAlign: TextAlign.center,
+                              ),
+                              const Icon(
+                                PhosphorIconsFill.star,
+                                size: 11,
+                                color: Colors.black,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 150,
+                      ),
                     ],
                   ),
                 ),
@@ -204,15 +205,16 @@ class _MyCardState extends State<MyCard> {
               Align(
                 alignment: Alignment.topRight,
                 child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        
-                      });
-                    },
-                    icon: const Icon(
-                      PhosphorIconsBold.bookmarkSimple,
-                      color: Colors.black,
-                    )),
+                  onPressed: () {
+                    setState(() {
+                      _isBookmarked = !_isBookmarked;
+                    });
+                  },
+                  icon: (_isBookmarked
+                      ? const Icon(PhosphorIconsFill.bookmarkSimple)
+                      : const Icon(PhosphorIconsRegular.bookmarkSimple)),
+                  color: Colors.black,
+                ),
               )
             ],
           ),

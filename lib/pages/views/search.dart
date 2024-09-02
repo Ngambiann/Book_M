@@ -1,5 +1,6 @@
-import 'package:bookmark/dummydata/categories.dart';
-import 'package:bookmark/pages/screens/filter.dart';
+
+import 'package:bookmark/dummydata/gems.dart';
+
 import 'package:flutter/material.dart';
 
 class Search extends StatefulWidget {
@@ -39,20 +40,69 @@ class _SearchState extends State<Search> {
           const SizedBox(
             height: 30,
           ),
-          Column(
-            children: [
-              MyCategoriesCards(categoryName: "hiking", onSelected: () {}),
-              MyCategoriesCards(categoryName: "hotel", onSelected: () {}),
-              MyCategoriesCards(categoryName: "hiking", onSelected: () {}),
-              MyCategoriesCards(categoryName: "hotel", onSelected: () {}),
-              MyCategoriesCards(categoryName: "hiking", onSelected: () {}),
-              MyCategoriesCards(categoryName: "hotel", onSelected: () {}),
-              MyCategoriesCards(categoryName: "hiking", onSelected: () {}),
-              MyCategoriesCards(categoryName: "hotel", onSelected: () {}),
-              MyCategoriesCards(categoryName: "hiking", onSelected: () {}),
-              MyCategoriesCards(categoryName: "hotel", onSelected: () {})
-            ],
-          )
+           MyCard(
+                    nameofPlace: "Bistro Adreno",
+                    imagePath: "assets/images/bistro.jpg",
+                    location: "Ole Sangale Road,Madaraka",
+                    onSelected: () {},
+                    rating: "4.7",
+                    category: "Bistro"),
+                MyCard(
+                    nameofPlace: "Bistro Adreno",
+                    imagePath: "assets/images/bistro.jpg",
+                    location: "Ole Sangale Road,Madaraka",
+                    onSelected: () {},
+                    rating: "4.7",
+                    category: "Bistro"),
+                MyCard(
+                    nameofPlace: "Bistro Adreno",
+                    imagePath: "assets/images/bistro.jpg",
+                    location: "Ole Sangale Road,Madaraka",
+                    onSelected: () {},
+                    rating: "4.7",
+                    category: "Bistro"),
+                MyCard(
+                    nameofPlace: "Bistro Adreno",
+                    imagePath: "assets/images/bistro.jpg",
+                    location: "Ole Sangale Road,Madaraka",
+                    onSelected: () {},
+                    rating: "4.7",
+                    category: "Bistro"),
+                MyCard(
+                    nameofPlace: "Bistro Adreno",
+                    imagePath: "assets/images/bistro.jpg",
+                    location: "Ole Sangale Road,Madaraka",
+                    onSelected: () {},
+                    rating: "4.7",
+                    category: "Bistro"),
+                MyCard(
+                    nameofPlace: "Bistro Adreno",
+                    imagePath: "assets/images/bistro.jpg",
+                    location: "Ole Sangale Road,Madaraka",
+                    onSelected: () {},
+                    rating: "4.7",
+                    category: "Bistro"),
+                MyCard(
+                    nameofPlace: "Bistro Adreno",
+                    imagePath: "assets/images/bistro.jpg",
+                    location: "Ole Sangale Road,Madaraka",
+                    onSelected: () {},
+                    rating: "4.7",
+                    category: "Bistro"),
+                MyCard(
+                    nameofPlace: "Bistro Adreno",
+                    imagePath: "assets/images/bistro.jpg",
+                    location: "Ole Sangale Road,Madaraka",
+                    onSelected: () {},
+                    rating: "4.7",
+                    category: "Bistro"),
+                MyCard(
+                    nameofPlace: "Bistro Adreno",
+                    imagePath: "assets/images/bistro.jpg",
+                    location: "Ole Sangale Road,Madaraka",
+                    onSelected: () {},
+                    rating: "4.7",
+                    category: "Bistro"),
         ],
       ),
     );

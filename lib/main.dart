@@ -1,8 +1,11 @@
+import 'package:bookmark/pages/screens/settings.dart';
 import 'package:bookmark/pages/views/authviews/auth.dart';
 
 import 'package:bookmark/theme/darkmode.dart';
 import 'package:bookmark/theme/lightmode.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,7 +17,10 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => ThemeProv(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -26,7 +32,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Bookmark',
-      theme: lightMode,
+      theme: Provider.of<ThemeProv>(context).themeData,
       darkTheme: darkMode,
       home: const Auth(),
     );

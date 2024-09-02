@@ -3,8 +3,6 @@ import 'package:bookmark/dummydata/categories.dart';
 import 'package:bookmark/dummydata/gems.dart';
 import 'package:bookmark/pages/screens/notifications.dart';
 
-
-
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -16,6 +14,13 @@ class Explore extends StatefulWidget {
 }
 
 class _MainpageState extends State<Explore> {
+  DateTime now = DateTime.now();
+  String greeting = switch (DateTime.now().hour) {
+    >= 6 && < 12 => 'Good morning',
+    >= 12 && < 18 => 'Good afternoon',
+    _ => 'Good evening',
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +30,9 @@ class _MainpageState extends State<Explore> {
         child: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          title: const Text(
-            "Good Afternoon",
-            style: TextStyle(
+          title: Text(
+            greeting,
+            style: const TextStyle(
                 color: Color.fromARGB(255, 185, 85, 30),
                 fontWeight: FontWeight.bold),
             textAlign: TextAlign.start,
@@ -47,7 +52,6 @@ class _MainpageState extends State<Explore> {
         padding: const EdgeInsets.all(12.0),
         child: ListView(
           children: [
-            
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -94,38 +98,6 @@ class _MainpageState extends State<Explore> {
                   ),
                   MyCategoriesbuttons(
                     categoryName: "Museums",
-                    onSelected: () {},
-                  ),
-                  MyCategoriesbuttons(
-                    categoryName: "Restaurant",
-                    onSelected: () {},
-                  ),
-                  MyCategoriesbuttons(
-                    categoryName: "Restaurant",
-                    onSelected: () {},
-                  ),
-                  MyCategoriesbuttons(
-                    categoryName: "Restaurant",
-                    onSelected: () {},
-                  ),
-                  MyCategoriesbuttons(
-                    categoryName: "Restaurant",
-                    onSelected: () {},
-                  ),
-                  MyCategoriesbuttons(
-                    categoryName: "Restaurant",
-                    onSelected: () {},
-                  ),
-                  MyCategoriesbuttons(
-                    categoryName: "Restaurant",
-                    onSelected: () {},
-                  ),
-                  MyCategoriesbuttons(
-                    categoryName: "Restaurant",
-                    onSelected: () {},
-                  ),
-                  MyCategoriesbuttons(
-                    categoryName: "Restaurant",
                     onSelected: () {},
                   ),
                 ],
