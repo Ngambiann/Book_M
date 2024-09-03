@@ -1,5 +1,5 @@
 import 'package:bookmark/dummydata/gems.dart';
-import 'package:bookmark/dummydata/storage/firestore.dart';
+
 import 'package:bookmark/pages/screens/adddestination.dart';
 import 'package:bookmark/pages/views/authviews/login.dart';
 import 'package:bookmark/pages/screens/about.dart';
