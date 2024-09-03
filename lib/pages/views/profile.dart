@@ -1,5 +1,6 @@
 import 'package:bookmark/dummydata/gems.dart';
 import 'package:bookmark/dummydata/storage/firestore.dart';
+import 'package:bookmark/pages/screens/adddestination.dart';
 import 'package:bookmark/pages/views/authviews/login.dart';
 import 'package:bookmark/pages/screens/about.dart';
 
@@ -24,11 +25,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  final FirestoreDestinations firestoreDestinations = FirestoreDestinations();
-  TextEditingController nameofPlacecontroller = TextEditingController();
-  TextEditingController categoryController = TextEditingController();
-  TextEditingController locationController = TextEditingController();
-  TextEditingController imagePathController = TextEditingController();
+ 
 
 //logout
   void logout() {
@@ -53,80 +50,7 @@ class _ProfileState extends State<Profile> {
         actions: [
           IconButton(
               onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                          titlePadding: const EdgeInsets.all(12),
-                          title: const Text('Add a destination gem'),
-                          scrollable: true,
-                          actions: [
-                            TextField(
-                              controller: nameofPlacecontroller,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25)),
-                                hintText: ("NameofPlace"),
-                              ),
-                            ),
-                            TextField(
-                              controller: locationController,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25)),
-                                hintText: ("Category"),
-                              ),
-                            ),
-                            TextField(
-                              controller: imagePathController,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25)),
-                                hintText: ("Location"),
-                              ),
-                            ),
-                            TextField(
-                              controller: categoryController,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25)),
-                                hintText: ("imagepath"),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: const Text(
-                                      "cancel",
-                                      style: TextStyle(color: Colors.black45),
-                                    )),
-                                ElevatedButton(
-                                    onPressed: () {
-                                      firestoreDestinations.addDestination(
-                                          nameofPlacecontroller.text,
-                                          locationController.text,
-                                          categoryController.text,
-                                          imagePathController.text);
-
-                                      nameofPlacecontroller.clear();
-                                      locationController.clear();
-                                      categoryController.clear();
-                                      imagePathController.clear();
-
-                                      Navigator.pop(context);
-                                    },
-                                    child: const Text(
-                                      'Add',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.amber),
-                                    ))
-                              ],
-                            )
-                          ],
-                        ));
+               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Add_destination()));
               },
               icon: const Icon(PhosphorIconsRegular.mapPinPlus))
         ],
@@ -285,49 +209,49 @@ class _ProfileState extends State<Profile> {
                 nameofPlace: "Ardhi Gallery",
                 imagePath: "assets/images/artgallery.jpg",
                 location: "parallel Four,OleSangale Road",
-                onSelected: () {},
+                onTap: () {},
                 rating: "4.0",
                 category: "Art Gallery"),
             MyCard(
                 nameofPlace: "Ardhi Gallery",
                 imagePath: "assets/images/artgallery.jpg",
                 location: "parallel Four,OleSangale Road",
-                onSelected: () {},
+                onTap: () {},
                 rating: "4.0",
                 category: "Art Gallery"),
             MyCard(
                 nameofPlace: "Ardhi Gallery",
                 imagePath: "assets/images/artgallery.jpg",
                 location: "parallel Four,OleSangale Road",
-                onSelected: () {},
+                onTap: () {},
                 rating: "4.0",
                 category: "Art Gallery"),
             MyCard(
                 nameofPlace: "Ardhi Gallery",
                 imagePath: "assets/images/artgallery.jpg",
                 location: "parallel Four,OleSangale Road",
-                onSelected: () {},
+                onTap: () {},
                 rating: "4.0",
                 category: "Art Gallery"),
             MyCard(
                 nameofPlace: "Ardhi Gallery",
                 imagePath: "assets/images/artgallery.jpg",
                 location: "parallel Four,OleSangale Road",
-                onSelected: () {},
+                onTap: () {},
                 rating: "4.0",
                 category: "Art Gallery"),
             MyCard(
                 nameofPlace: "Ardhi Gallery",
                 imagePath: "assets/images/artgallery.jpg",
                 location: "parallel Four,OleSangale Road",
-                onSelected: () {},
+                onTap: () {},
                 rating: "4.0",
                 category: "Art Gallery"),
             MyCard(
                 nameofPlace: "Ardhi Gallery",
                 imagePath: "assets/images/artgallery.jpg",
                 location: "parallel Four,OleSangale Road",
-                onSelected: () {},
+                onTap: () {},
                 rating: "4.0",
                 category: "Art Gallery"),
           ]),
@@ -338,49 +262,49 @@ class _ProfileState extends State<Profile> {
                   nameofPlace: "Ardhi Gallery",
                   imagePath: "assets/images/artgallery.jpg",
                   location: "parallel Four,OleSangale Road",
-                  onSelected: () {},
+                  onTap: () {},
                   rating: "4.0",
                   category: "Art Gallery"),
               MyCard(
                   nameofPlace: "Ardhi Gallery",
                   imagePath: "assets/images/artgallery.jpg",
                   location: "parallel Four,OleSangale Road",
-                  onSelected: () {},
+                  onTap: () {},
                   rating: "4.0",
                   category: "Art Gallery"),
               MyCard(
                   nameofPlace: "Ardhi Gallery",
                   imagePath: "assets/images/artgallery.jpg",
                   location: "parallel Four,OleSangale Road",
-                  onSelected: () {},
+                  onTap: () {},
                   rating: "4.0",
                   category: "Art Gallery"),
               MyCard(
                   nameofPlace: "Ardhi Gallery",
                   imagePath: "assets/images/artgallery.jpg",
                   location: "parallel Four,OleSangale Road",
-                  onSelected: () {},
+                  onTap: () {},
                   rating: "4.0",
                   category: "Art Gallery"),
               MyCard(
                   nameofPlace: "Ardhi Gallery",
                   imagePath: "assets/images/artgallery.jpg",
                   location: "parallel Four,OleSangale Road",
-                  onSelected: () {},
+                  onTap: () {},
                   rating: "4.0",
                   category: "Art Gallery"),
               MyCard(
                   nameofPlace: "Ardhi Gallery",
                   imagePath: "assets/images/artgallery.jpg",
                   location: "parallel Four,OleSangale Road",
-                  onSelected: () {},
+                  onTap: () {},
                   rating: "4.0",
                   category: "Art Gallery"),
               MyCard(
                   nameofPlace: "Ardhi Gallery",
                   imagePath: "assets/images/artgallery.jpg",
                   location: "parallel Four,OleSangale Road",
-                  onSelected: () {},
+                  onTap: () {},
                   rating: "4.0",
                   category: "Art Gallery"),
             ],

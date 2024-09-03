@@ -6,7 +6,7 @@ class MyCard extends StatefulWidget {
   final String nameofPlace;
   final String location;
   final String imagePath;
-  final Function onSelected;
+  final  onTap;
   final String rating;
   final String category;
 
@@ -15,7 +15,7 @@ class MyCard extends StatefulWidget {
       required this.nameofPlace,
       required this.imagePath,
       required this.location,
-      required this.onSelected,
+      required this.onTap,
       required this.rating,
       required this.category});
 
@@ -30,6 +30,7 @@ class _MyCardState extends State<MyCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      
       color: Colors.white,
       margin: const EdgeInsets.all(12),
       elevation: 0,
@@ -43,9 +44,14 @@ class _MyCardState extends State<MyCard> {
                 color: Colors.white,
                 child: Column(
                   children: [
-                    Image.asset(
-                      widget.imagePath,
-                      fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        
+                      },
+                      child: Image.asset(
+                        widget.imagePath,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ],
                 ),

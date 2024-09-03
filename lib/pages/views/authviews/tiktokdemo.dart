@@ -1,4 +1,5 @@
 import 'package:bookmark/pages/screens/navscreens.dart';
+import 'package:bookmark/pages/views/authviews/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -82,7 +83,7 @@ class Tiktokdemo extends StatelessWidget {
                ElevatedButton(
                 style:const  ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.white)),
                 onPressed: (){
-                Navigator.pop(context);
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Signup()));
               }, child:const Text("Cancel",style: TextStyle(color: Colors.black),textAlign: TextAlign.center,))
         ],
       ),

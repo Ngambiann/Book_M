@@ -5,31 +5,29 @@ class FirestoreDestinations {
       FirebaseFirestore.instance.collection('destination');
 //C
   Future<void> addDestination(
-      String nameofPlace, String category, String location, String imagePath) {
+      String nameofPlace, String category, String location,) {
     return destinations.add({
       'nameofPlace': nameofPlace,
       'category': category,
       'location': location,
-      'imagePath': imagePath,
       'DateTime': DateTime.now()
     });
   }
 
 //R
   Stream<QuerySnapshot> getDestinationsStream() {
-    final destinationsStream =
-        destinations.orderBy('nameofPlace').snapshots();
+    final destinationsStream = destinations.orderBy('nameofPlace').snapshots();
     return destinationsStream;
   }
 
 //U
   Future<void> updateDestination(String docID, String newnameofPlace,
-      String newcategory, String newlocation, String newimagePath) {
+      String newcategory, String newlocation,) {
     return destinations.doc(docID).update({
       'nameofPlace': newnameofPlace,
       'category': newcategory,
       'location': newlocation,
-      'imagePath': newimagePath,
+      
       'DateTime': DateTime.now()
     });
   }

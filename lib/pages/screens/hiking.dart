@@ -2,14 +2,14 @@ import 'package:bookmark/dummydata/gems.dart';
 import 'package:bookmark/pages/views/search.dart';
 import 'package:flutter/material.dart';
 
-class EventsShows extends StatefulWidget {
-  const EventsShows({super.key});
+class Hiking extends StatefulWidget {
+  const Hiking({super.key});
 
   @override
-  State<EventsShows> createState() => _EventsState();
+  State<Hiking> createState() => _EventsState();
 }
 
-class _EventsState extends State<EventsShows> {
+class _EventsState extends State<Hiking> {
   TextEditingController searchController =TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _EventsState extends State<EventsShows> {
               const Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  'Events in the area:',
+                  'Hiking sites in the area:',
                   style: TextStyle(
                     fontSize: 36,
                       fontWeight: FontWeight.w600,
@@ -44,7 +44,7 @@ class _EventsState extends State<EventsShows> {
             decoration: InputDecoration(
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
-                hintText: "Search for events...",
+                hintText: "Search for sites...",
                 labelStyle: const TextStyle(color: Colors.black54),
                 fillColor: Colors.black45,
                 iconColor: Colors.black87,
@@ -59,75 +59,75 @@ class _EventsState extends State<EventsShows> {
           ),
 
               MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
+                  nameofPlace: 'Trackies',
+                  imagePath: "assets/images/hiking.jpg",
+                  location: 'Karura,kiambu road gate',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Hiking'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
+                  nameofPlace: 'trackies Ngong',
+                  imagePath: "assets/images/hikingD.jpg",
+                  location: 'Karura,kiambu road gate',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Hiking'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
+                  nameofPlace: 'trackies',
+                  imagePath: "assets/images/hikingD.jpg",
+                  location: 'Karura,kiambu road gate',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Hiking'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
+                  nameofPlace: 'trackies',
+                  imagePath: "assets/images/hikingbags.jpg",
+                  location: 'Karura,kiambu road gate',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Hiking'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
+                  nameofPlace: 'trackies',
+                  imagePath: "assets/images/hiking.jpg",
+                  location: 'Karura,kiambu road gate',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Hiking'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
+                  nameofPlace: 'trackies',
+                  imagePath: "assets/images/hikingD.jpg",
+                  location: 'Karura,kiambu road gate',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Hiking'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
+                  nameofPlace: 'trackies',
+                  imagePath: "assets/images/hikingbags.jpg",
+                  location: 'Karura,kiambu road gate',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Hiking'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
+                  nameofPlace: 'trackies',
+                  imagePath: "assets/images/hiking.jpg",
+                  location: 'Karura,kiambu road gate',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Hiking'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
+                  nameofPlace: 'trackies',
+                  imagePath: "assets/images/hikingD.jpg",
+                  location: 'Karura,kiambu road gate',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Hiking'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
+                  nameofPlace: 'trackies',
+                  imagePath: "assets/images/hiking.jpg",
+                  location: 'Karura,kiambu road gate',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Hiking'),
 
             ],
           )

@@ -2,7 +2,7 @@ import 'package:bookmark/pages/screens/settings.dart';
 import 'package:bookmark/pages/views/authviews/auth.dart';
 
 import 'package:bookmark/theme/darkmode.dart';
-import 'package:bookmark/theme/lightmode.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

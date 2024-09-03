@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class MyCategoriesbuttons extends StatelessWidget {
   final String categoryName;
-  final Function onSelected;
+  final  onPressed;
   const MyCategoriesbuttons(
-      {super.key, required this.categoryName, required this.onSelected});
+      {super.key, required this.categoryName, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class MyCategoriesbuttons extends StatelessWidget {
         style: const ButtonStyle(
             backgroundColor:
                 WidgetStatePropertyAll(Color.fromARGB(255, 193, 99, 36))),
-        onPressed: onSelected(),
+        onPressed:onPressed ,
         child: Text(
           categoryName,
           style: const TextStyle(color: Colors.black87),

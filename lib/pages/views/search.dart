@@ -30,7 +30,7 @@ class _SearchState extends State<Search> {
                 iconColor: Colors.black87,
                 suffixIcon: IconButton(
                     onPressed: () {
-//search database
+
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Search()));
                     },
@@ -44,63 +44,63 @@ class _SearchState extends State<Search> {
                     nameofPlace: "Bistro Adreno",
                     imagePath: "assets/images/bistro.jpg",
                     location: "Ole Sangale Road,Madaraka",
-                    onSelected: () {},
+                    onTap: () {},
                     rating: "4.7",
                     category: "Bistro"),
                 MyCard(
                     nameofPlace: "Bistro Adreno",
                     imagePath: "assets/images/bistro.jpg",
                     location: "Ole Sangale Road,Madaraka",
-                    onSelected: () {},
+                    onTap: () {},
                     rating: "4.7",
                     category: "Bistro"),
                 MyCard(
                     nameofPlace: "Bistro Adreno",
                     imagePath: "assets/images/bistro.jpg",
                     location: "Ole Sangale Road,Madaraka",
-                    onSelected: () {},
+                    onTap: () {},
                     rating: "4.7",
                     category: "Bistro"),
                 MyCard(
                     nameofPlace: "Bistro Adreno",
                     imagePath: "assets/images/bistro.jpg",
                     location: "Ole Sangale Road,Madaraka",
-                    onSelected: () {},
+                    onTap: () {},
                     rating: "4.7",
                     category: "Bistro"),
                 MyCard(
                     nameofPlace: "Bistro Adreno",
                     imagePath: "assets/images/bistro.jpg",
                     location: "Ole Sangale Road,Madaraka",
-                    onSelected: () {},
+                    onTap: () {},
                     rating: "4.7",
                     category: "Bistro"),
                 MyCard(
                     nameofPlace: "Bistro Adreno",
                     imagePath: "assets/images/bistro.jpg",
                     location: "Ole Sangale Road,Madaraka",
-                    onSelected: () {},
+                    onTap: () {},
                     rating: "4.7",
                     category: "Bistro"),
                 MyCard(
                     nameofPlace: "Bistro Adreno",
                     imagePath: "assets/images/bistro.jpg",
                     location: "Ole Sangale Road,Madaraka",
-                    onSelected: () {},
+                    onTap: () {},
                     rating: "4.7",
                     category: "Bistro"),
                 MyCard(
                     nameofPlace: "Bistro Adreno",
                     imagePath: "assets/images/bistro.jpg",
                     location: "Ole Sangale Road,Madaraka",
-                    onSelected: () {},
+                    onTap: () {},
                     rating: "4.7",
                     category: "Bistro"),
                 MyCard(
                     nameofPlace: "Bistro Adreno",
                     imagePath: "assets/images/bistro.jpg",
                     location: "Ole Sangale Road,Madaraka",
-                    onSelected: () {},
+                    onTap: () {},
                     rating: "4.7",
                     category: "Bistro"),
         ],

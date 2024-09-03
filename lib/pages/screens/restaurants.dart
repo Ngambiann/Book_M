@@ -2,14 +2,14 @@ import 'package:bookmark/dummydata/gems.dart';
 import 'package:bookmark/pages/views/search.dart';
 import 'package:flutter/material.dart';
 
-class EventsShows extends StatefulWidget {
-  const EventsShows({super.key});
+class Restaurants extends StatefulWidget {
+  const Restaurants({super.key});
 
   @override
-  State<EventsShows> createState() => _EventsState();
+  State<Restaurants> createState() => _EventsState();
 }
 
-class _EventsState extends State<EventsShows> {
+class _EventsState extends State<Restaurants> {
   TextEditingController searchController =TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _EventsState extends State<EventsShows> {
               const Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  'Events in the area:',
+                  'Restaurants in the area:',
                   style: TextStyle(
                     fontSize: 36,
                       fontWeight: FontWeight.w600,
@@ -44,7 +44,7 @@ class _EventsState extends State<EventsShows> {
             decoration: InputDecoration(
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
-                hintText: "Search for events...",
+                hintText: "Search for restaurants...",
                 labelStyle: const TextStyle(color: Colors.black54),
                 fillColor: Colors.black45,
                 iconColor: Colors.black87,
@@ -59,75 +59,75 @@ class _EventsState extends State<EventsShows> {
           ),
 
               MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Mwendasss',
+                  imagePath: "assets/images/bar&restaurant.jpg",
+                  location: 'Nrb town,Cbd',
+                  onTap: () {},
+                  rating: '5.0',
+                  category: 'Restaurants'),
+                  MyCard(
+                  nameofPlace: 'Hotel nimo',
+                  imagePath: "assets/images/hotel and restaurant.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Restaurants'),
+                  MyCard(
+                  nameofPlace: 'Bun & Beef',
+                  imagePath: "assets/images/food.jpg",
+                  location: 'KICC,Cbd',
+                  onTap: () {},
+                  rating: '5.0',
+                  category: 'Restaurants'),
+                  MyCard(
+                  nameofPlace: 'The Steak House',
+                  imagePath: "assets/images/formaldine.jpg",
+                  location: 'KICC,Cbd',
+                  onTap: () {},
+                  rating: '5.0',
+                  category: 'Restaurants'),
+                  MyCard(
+                  nameofPlace: 'Fish cuisine',
+                  imagePath: "assets/images/fishfood.jpg",
+                  location: 'KICC,Cbd',
+                  onTap: () {},
+                  rating: '5.0',
+                  category: 'Restaurants'),
                   MyCard(
                   nameofPlace: 'Wine tails',
                   imagePath: "assets/images/rooftoprestaurant.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Restaurants'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Dinny diner',
+                  imagePath: "assets/images/food.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Restaurants'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Fishy house',
+                  imagePath: "assets/images/fishfood.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Looby dobby'),
                   MyCard(
                   nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  imagePath: "assets/images/lobby.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Hiroshima'),
                   MyCard(
                   nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  imagePath: "assets/images/japanese.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
-                  MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
-                  onTap: () {},
-                  rating: '5.0',
-                  category: 'Events/shows'),
-                  MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
-                  onTap: () {},
-                  rating: '5.0',
-                  category: 'Events/shows'),
-                  MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
-                  onTap: () {},
-                  rating: '5.0',
-                  category: 'Events/shows'),
-                  MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
-                  location: 'KICC,Cbd',
-                  onTap: () {},
-                  rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Restaurants'),
 
             ],
           )

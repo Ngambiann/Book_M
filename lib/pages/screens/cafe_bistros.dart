@@ -2,14 +2,14 @@ import 'package:bookmark/dummydata/gems.dart';
 import 'package:bookmark/pages/views/search.dart';
 import 'package:flutter/material.dart';
 
-class EventsShows extends StatefulWidget {
-  const EventsShows({super.key});
+class CafeBistros extends StatefulWidget {
+  const CafeBistros({super.key});
 
   @override
-  State<EventsShows> createState() => _EventsState();
+  State<CafeBistros> createState() => _EventsState();
 }
 
-class _EventsState extends State<EventsShows> {
+class _EventsState extends State<CafeBistros> {
   TextEditingController searchController =TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _EventsState extends State<EventsShows> {
               const Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  'Events in the area:',
+                  'cafes/Bistros in the area:',
                   style: TextStyle(
                     fontSize: 36,
                       fontWeight: FontWeight.w600,
@@ -44,7 +44,7 @@ class _EventsState extends State<EventsShows> {
             decoration: InputDecoration(
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(45)),
-                hintText: "Search for events...",
+                hintText: "Search for cafes...",
                 labelStyle: const TextStyle(color: Colors.black54),
                 fillColor: Colors.black45,
                 iconColor: Colors.black87,
@@ -59,75 +59,75 @@ class _EventsState extends State<EventsShows> {
           ),
 
               MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Cafe shiks',
+                  imagePath: "assets/images/cafe.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Cafes/Bistro'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Bistro Adreno',
+                  imagePath: "assets/images/cafebooks.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Cafes/Bistro'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Cuties',
+                  imagePath: "assets/images/cutecafe.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Cafes/Bistro'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Bistro Adreno',
+                  imagePath: "assets/images/cafebooks.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Cafes/Bistro'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Bistro Adreno',
+                  imagePath: "assets/images/cafe.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Cafes/Bistro'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Bistro Adreno',
+                  imagePath: "assets/images/coffeeplace.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Cafes/Bistro'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Bistro Adreno',
+                  imagePath: "assets/images/cocktails.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Cafes/Bistro'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Bistro Tres',
+                  imagePath: "assets/images/restaurantfood.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Cafes/Bistro'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Bistro Adreno',
+                  imagePath: "assets/images/cafebooks.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Cafes/Bistro'),
                   MyCard(
-                  nameofPlace: 'Wine tails',
-                  imagePath: "assets/images/rooftoprestaurant.jpg",
+                  nameofPlace: 'Bistro Adreno',
+                  imagePath: "assets/images/cutecafe.jpg",
                   location: 'KICC,Cbd',
                   onTap: () {},
                   rating: '5.0',
-                  category: 'Events/shows'),
+                  category: 'Cafes/Bistro'),
 
             ],
           )
