@@ -1,4 +1,4 @@
-import 'package:bookmark/dummydata/categories.dart';
+import 'package:bookmark/components/buttons/categories.dart';
 
 import 'package:bookmark/dummydata/gems.dart';
 import 'package:bookmark/pages/screens/airbnb.dart';

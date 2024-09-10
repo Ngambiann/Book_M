@@ -1,3 +1,4 @@
+import 'package:bookmark/components/onboarding/onboardingview.dart';
 import 'package:bookmark/pages/views/authviews/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -17,6 +18,19 @@ class _SlidesState extends State<Slides> {
   Widget build(BuildContext context) {
     return Scaffold(
       //backgroundColor: const Color.fromARGB(135, 207, 101, 25),
+      appBar: AppBar(
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const Signup()));
+              },
+              child: const Text(
+                "Skip",
+                style: TextStyle(color: Colors.black54),
+              ))
+        ],
+      ),
 
 //body
 
@@ -33,79 +47,29 @@ class _SlidesState extends State<Slides> {
               });
             },
 //diff slides
-            children: [
-              //-#1
-              ListView(
-                padding: const EdgeInsets.all(25),
-                children: [
-                  const SizedBox(
-                    height: 380,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(25),
-                    height: 200,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(134, 225, 102, 15),
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(45)),
-                    child: const Text('Discover cool hidden gems in the city',
-                        style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold)),
-                  ),
-                ],
-              ),
-              //-#2
-              ListView(
-                padding: const EdgeInsets.all(12),
-                children: [
-                  const SizedBox(
-                    height: 380,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(25),
-                    height: 200,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(134, 225, 102, 15),
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(45)),
-                    child: const Text(
-                        'Save all your hidden gems for offline access',
-                        style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold)),
-                  ),
-                ],
-              ),
-              //-#3
-              ListView(
-                padding: const EdgeInsets.all(12),
-                children: [
-                  const SizedBox(
-                    height: 380,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(25),
-                    height: 200,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(134, 225, 102, 15),
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(45)),
-                    child: const Text(
-                        "Let's get the trip out of the group chat!",
-                        style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 38,
-                            fontWeight: FontWeight.bold)),
-                  ),
-                ],
-              )
+            children: const [
+//-#1
+              Onboardingview(
+                  imagePath: "assets/images/page00.png",
+                  catchLine: "Discover cool hidden gems in the city",
+                  descripiton:
+                      "Find the perfect locations for a party,club meeting,group activity,date,solo date,rewind..."),
+
+//-#2
+              Onboardingview(
+                  imagePath: "assets/images/page00.png",
+                  catchLine: " offline access",
+                  descripiton: "Save all your hidden gems for offline access"),
+
+//-#3
+              Onboardingview(
+                  imagePath: "assets/images/page00.png",
+                  catchLine: "Discover",
+                  descripiton: "Let's get the trip out of the group chat!"),
             ],
           )),
+//indicator
           Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-            //indicator
             SmoothPageIndicator(
               controller: _controller,
               count: 3,
@@ -158,48 +122,3 @@ class _SlidesState extends State<Slides> {
   }
 }
 
-//pages template class
-/*class SlidePages extends StatelessWidget {
-  final String tagLine;
-  final String imagePath;
-
-  const SlidePages({
-    super.key,
-    required this.tagLine,
-    required this.imagePath,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-            child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(145),
-          ),
-        )),
-        const SizedBox(
-          height: 40,
-        ),
-//image
-        Image.asset(imagePath),
-        const SizedBox(
-          height: 20,
-        ),
-//tagline
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Text(
-            tagLine,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 16, color: Colors.black87),
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-      ],
-    );
-  }
-}*/
